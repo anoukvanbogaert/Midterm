@@ -1,3 +1,4 @@
+const {Pool} = require('pg/lib');
 const db = require('../connection');
 
 const getUsers = () => {
@@ -7,4 +8,5 @@ const getUsers = () => {
     });
 };
 
-module.exports = { getUsers };
+
+module.exports = {getUsers};

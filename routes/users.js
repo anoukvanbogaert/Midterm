@@ -6,10 +6,11 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('users');
-}); 
+  res.json(quizzes);
+  console.log(res.json(quizzes));
+});
 
 module.exports = router;
