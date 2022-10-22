@@ -9,8 +9,6 @@ INSERT INTO questions (question, option_1, option_2, option_3, option_4, quiz_id
 VALUES ('Whats the capital of Germany', 'Paris', 'Berlin', 'Brussels', 'Amsterdam', 1),
 ('How many people live in canada', 'Less than 20 million', '20 million - 30 million', '30 million-50 million', 'more than 20 million', 1);
 
-
-
 -- QUIZ 2 -- ID 2
 
 INSERT INTO quizzes (name, user_id) VALUES ('Do you know Cats?', 2);

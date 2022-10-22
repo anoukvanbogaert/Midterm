@@ -9,8 +9,9 @@ const express = require('express');
 const router  = express.Router();
 const questionsQueries = require('../db/queries/helpers');
 
-router.get('/', (req, res) => {
-  questionsQueries.getQuestionsForQuiz()
+router.get('/:id', (req, res) => {
+  const {id} = req.params;
+  questionsQueries.getQuestionsForQuiz(id)
     .then(quizzes => {
       res.json({ quizzes });
     })
