@@ -7,10 +7,10 @@
 
 const express = require('express');
 const router  = express.Router();
-const quizQueries = require('../db/queries/helpers');
+const questionsQueries = require('../db/queries/helpers');
 
 router.get('/', (req, res) => {
-  quizQueries.getQuizzes()
+  questionsQueries.getQuestionsForQuiz()
     .then(quizzes => {
       res.json({ quizzes });
     })
@@ -22,4 +22,3 @@ router.get('/', (req, res) => {
 });
 
 module.exports = router;
-

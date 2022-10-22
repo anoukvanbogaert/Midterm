@@ -13,12 +13,12 @@ VALUES ('Whats the capital of Germany', 'Paris', 'Berlin', 'Brussels', 'Amsterda
 
 -- QUIZ 2 -- ID 2
 
-INSERT INTO quizzes (name, user_id) VALUES ('Do you know Cats?', 2)
+INSERT INTO quizzes (name, user_id) VALUES ('Do you know Cats?', 2);
 
 INSERT INTO questions (question, option_1, option_2, option_3, option_4, quiz_id)
-VALUES (`What percent of a Cat's genome is Tiger?`, '95.6', '50', '60', '70',  2),
-(`How high can a cat jump?`, 'Six times their length', 'As high as they want', 'Up to six feet', 'My cat is lazy', 2),
-('Which of the following is true?', 'A cat cannot taste sweetness', 'Cats have 100 bones', 'There are no whiskers on their front legs', 'Females are more likely to be left-pawed', 2)
+VALUES ('What percent of a Cats genome is Tiger?', '95.6', '50', '60', '70',  2),
+('How high can a cat jump?', 'Six times their length', 'As high as they want', 'Up to six feet', 'My cat is lazy', 2),
+('Which of the following is true?', 'A cat cannot taste sweetness', 'Cats have 100 bones', 'There are no whiskers on their front legs', 'Females are more likely to be left-pawed', 2);
 
 
 INSERT INTO users_questions (user_id, question_id, answer)
