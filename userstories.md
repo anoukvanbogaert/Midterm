@@ -19,3 +19,10 @@ Quiz page - after clicking on a quiz on HomePage get redirected to a webpage wit
 
 Results page - shows the results of your quiz 
 
+## routes 
+
+Get '/' Home page - displays quizzes
+
+Get '/quizzes/' Quiz page 
+
+Get '/results:id' results page
