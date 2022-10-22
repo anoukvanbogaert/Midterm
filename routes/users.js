@@ -5,13 +5,19 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/remotes/origin/master
 const express = require("express");
 const router = express.Router();
 
 router.get("/", (req, res) => {
   res.render("users");
+<<<<<<< HEAD
+=======
 
+>>>>>>> refs/remotes/origin/master
 });
 
 module.exports = router;
