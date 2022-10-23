@@ -12,7 +12,7 @@ const quizQueries = require('../db/queries/helpers');
 // Get cookies (without login)
 router.get('/login/:id', (req, res) => {
   // using encrypted cookies
-  req.session.user_id = req.params.id;
+  req.session.user_id = req.params.id; // require the right cookie thing
   res.redirect('/');
 });
 

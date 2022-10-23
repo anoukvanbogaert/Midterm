@@ -47,7 +47,11 @@ app.use("/questions", questionsApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("homepage");
+});
+
+app.get("/quizzes", (req, res) => {
+  res.render("allquizzes");
 });
 
 app.listen(PORT, () => {
