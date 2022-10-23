@@ -20,7 +20,7 @@ router.get('/login/:id', (req, res) => {
 router.get('/', (req, res) => {
   quizQueries.getQuizzes()
     .then(quizzes => {
-      res.json({ quizzes });
+      res.render('allquizzes');
     })
     .catch(err => {
       res
