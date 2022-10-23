@@ -20,7 +20,11 @@ router.get('/login/:id', (req, res) => {
 router.get('/', (req, res) => {
   quizQueries.getQuizzes()
     .then(quizzes => {
-      res.render('allquizzes');
+      const templateVars = {
+        quizzes
+      };
+      console.log(templateVars);
+      res.render('allquizzes', templateVars);
     })
     .catch(err => {
       res

@@ -39,9 +39,13 @@
       <h3>Rating</h3>
     </div>
     <div class="all-quizzes-grid single-quiz ">
-      <p>How smart am I?</p>
-      <p>John2922</p>
-      <p>01-21-2022</p>
+      <% for (let quiz of quizzes) { %>
+        <p><%= quiz.title %></p>
+        <p><%= quiz.name %></p>
+        <p><%= quiz.date.toLocaleDateString() %></p>
+        <p>Likes</p>
+        <p>Rating</p>
+      <% } %>
       <span class="likes-box">
         <img src="/thumbsup.png" alt="">
       <p class="likes-circle">20</p>
