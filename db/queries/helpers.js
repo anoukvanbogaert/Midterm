@@ -17,9 +17,17 @@ const getQuizzes = () => {
     });
 };
 
+// Grab quizzes DB
+const getUserQuizzes = (id) => {
+  return db.query('SELECT * FROM quizzes WHERE user_id = $1', [id])
+    .then(data => {
+      return data.rows[0];
+    });
+};
+
 // Grab questions DB
-const getQuestionsForQuiz = () => {
-  return db.query('SELECT quizzes.name, question FROM questions JOIN quizzes ON quizzes.id = quiz_id WHERE quiz_id = 1;')
+const getQuestionsForQuiz = (id) => {
+  return db.query('SELECT quizzes.name, question, option_1, option_2, option_3, option_4 FROM questions JOIN quizzes ON quizzes.id = quiz_id WHERE quiz_id = $1', [id])
     .then(data => {
       return data.rows;
     });
@@ -27,5 +35,5 @@ const getQuestionsForQuiz = () => {
 
 
 // export helper functions
-module.exports = {getUsers, getQuizzes, getQuestionsForQuiz};
+module.exports = {getUsers, getQuizzes, getQuestionsForQuiz, getUserQuizzes};
 

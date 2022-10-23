@@ -9,6 +9,14 @@ const express = require('express');
 const router  = express.Router();
 const quizQueries = require('../db/queries/helpers');
 
+// Get cookies (without login)
+router.get('/login/:id', (req, res) => {
+  // using encrypted cookies
+  req.session.user_id = req.params.id;
+  res.redirect('/');
+});
+
+// Get ALL quizzes
 router.get('/', (req, res) => {
   quizQueries.getQuizzes()
     .then(quizzes => {
@@ -21,5 +29,20 @@ router.get('/', (req, res) => {
     });
 });
 
-module.exports = router;
+// Get user owned quizzes
+// Need params ID for quiz
+router.get('/:id', (req, res) => {
+  const {id} = req.params;
+  console.log(id);
+  quizQueries.getUserQuizzes(id)
+    .then(quizzes => {
+      res.json({ quizzes });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+});
 
+module.exports = router;

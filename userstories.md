@@ -21,8 +21,12 @@ Results page - shows the results of your quiz
 
 ## routes 
 
-Get '/' Home page - displays quizzes
+Get '/' Home page - displays ALL quizzes (no questions) with the user that made it 
 
-Get '/quizzes/' Quiz page 
+Get '/api/quizzes' - populates quiz name 
 
-Get '/results:id' results page
+Get '/api/quizzes:id' - populates quiz name for user that owns that quiz <---
+
+Get '/api/questions:id' populates questions for quiz with matching id
+
+
