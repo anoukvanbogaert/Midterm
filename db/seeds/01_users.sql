@@ -4,9 +4,13 @@ INSERT INTO users (name, email) VALUES ('Paris', 'paris@email.com'); -- ID 2
 INSERT INTO users (name, email) VALUES ('bondy', 'bondy@lhl.ca'); -- ID 3
 
 -- QUIZ 1 - ID 1
+<<<<<<< HEAD
 INSERT INTO quizzes (name, user_id) VALUES ('how smart am I', 1);
 INSERT INTO quizzes (name, user_id) VALUES ('TEST FROM DB 1', 2);
 INSERT INTO quizzes (name, user_id) VALUES ('TEST FROM DB 2', 3);
+=======
+INSERT INTO quizzes (title, user_id, date) VALUES ('how smart am I', 1, '2022-10-20');
+>>>>>>> refs/remotes/origin/master
 
 INSERT INTO questions (question, option_1, option_2, option_3, option_4, quiz_id)
 VALUES ('Whats the capital of Germany', 'Paris', 'Berlin', 'Brussels', 'Amsterdam', 1),
@@ -14,10 +18,10 @@ VALUES ('Whats the capital of Germany', 'Paris', 'Berlin', 'Brussels', 'Amsterda
 
 -- QUIZ 2 -- ID 2
 
-INSERT INTO quizzes (name, user_id) VALUES ('Do you know Cats?', 2);
+INSERT INTO quizzes (title, user_id, date) VALUES ('Do you know Cats?', 2, '2022-10-21');
 
 INSERT INTO questions (question, option_1, option_2, option_3, option_4, quiz_id)
-VALUES ('What percent of a Cats genome is Tiger?', '95.6', '50', '60', '70',  2),
+VALUES ('What percent of a Cats genome is Tiger?', '95.6', '50', '60.8', '70.5',  2),
 ('How high can a cat jump?', 'Six times their length', 'As high as they want', 'Up to six feet', 'My cat is lazy', 2),
 ('Which of the following is true?', 'A cat cannot taste sweetness', 'Cats have 100 bones', 'There are no whiskers on their front legs', 'Females are more likely to be left-pawed', 2);
 

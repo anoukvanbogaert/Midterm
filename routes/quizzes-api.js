@@ -5,6 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+<<<<<<< HEAD
 const { request } = require("express");
 const express = require("express");
 const router = express.Router();
@@ -25,6 +26,28 @@ router.get("/", (req, res) => {
 
       // res.json({ quizzes });
       res.render("allquizzes", templateVars);
+=======
+const express = require('express');
+const router  = express.Router();
+const quizQueries = require('../db/queries/helpers');
+
+// Get cookies (without login)
+router.get('/login/:id', (req, res) => {
+  // using encrypted cookies
+  req.session.user_id = req.params.id; // require the right cookie thing
+  res.redirect('/');
+});
+
+// Get ALL quizzes
+router.get('/', (req, res) => {
+  quizQueries.getQuizzes()
+    .then(quizzes => {
+      const templateVars = {
+        quizzes
+      };
+      console.log(templateVars);
+      res.render('allquizzes', templateVars);
+>>>>>>> refs/remotes/origin/master
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });

@@ -23,10 +23,11 @@ Results page - shows the results of your quiz
 
 Get '/' Home page - displays ALL quizzes (no questions) with the user that made it 
 
-Get '/api/quizzes' - populates quiz name 
+Get '/quizzes/"questionsID"' - after clicking on a quiz it will redirect to that quiz with the questions listed 
 
-Get '/api/quizzes:id' - populates quiz name for user that owns that quiz <---
+Get '/results' - redirects to the results for the quiz the user did - has an option to share 
 
-Get '/api/questions:id' populates questions for quiz with matching id
+<!-- Get '/quizzes/"userid"' - populates quiz name for user that owns that quiz  -->
+
 
 

@@ -13,11 +13,17 @@ CREATE TABLE users (
 
 CREATE TABLE quizzes (
   id SERIAL PRIMARY KEY NOT NULL,
+<<<<<<< HEAD
   name VARCHAR(255) NOT NULL,
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   likes smallint NOT NULL DEFAULT 0,
   rating smallint NOT NULL DEFAULT 5
+=======
+  title VARCHAR(255) NOT NULL,
+  date DATE,
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE
+>>>>>>> refs/remotes/origin/master
 );
 
 CREATE TABLE questions (

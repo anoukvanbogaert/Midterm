@@ -5,14 +5,33 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+<<<<<<< HEAD
   <link rel="stylesheet" href="/styles/allquizzes.css" type="text/css" />
+=======
+  <link rel="stylesheet" href="/styles/allquizzesstyle.css" />
+>>>>>>> refs/remotes/origin/master
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
       rel="stylesheet"
     />
 </head>
 <body>
+<<<<<<< HEAD
   <%- include('partials/_navbar') %>
+=======
+  <nav class="nav">
+    <img class="logo-img" src="../logo.png" alt="logo" />
+    <ul class="nav-links">
+      <li><a href="#">All Quizzes</a></li>
+      <li><a href="#">My Quizzes</a></li>
+      <li><a href="#">Support</a></li>
+    </ul>
+    <div class="nav-user">
+      <img src="/user2.png" alt="" />
+      <p>John</p>
+    </div>
+  </nav>
+>>>>>>> refs/remotes/origin/master
 
   <div class="all-quizzes-container-title">
     <h1>All Quizzes</h1>
@@ -20,13 +39,18 @@
 
   <div class="all-quizzes-container">
 
+<<<<<<< HEAD
     <div class="all-quizzes-grid table-title-grid">
+=======
+    <div class="all-quizzes-grid ">
+>>>>>>> refs/remotes/origin/master
       <h3>Title</h3>
       <h3>User</h3>
       <h3>Creation Date</h3>
       <h3>Likes</h3>
       <h3>Rating</h3>
     </div>
+<<<<<<< HEAD
 
     <% for (let quiz of quizzes) { %>
 
@@ -53,3 +77,109 @@
 </html>
 
 
+=======
+    <div class="all-quizzes-grid single-quiz ">
+      <% for (let quiz of quizzes) { %>
+        <p><%= quiz.title %></p>
+        <p><%= quiz.name %></p>
+        <p><%= quiz.date.toLocaleDateString() %></p>
+        <p>Likes</p>
+        <p>Rating</p>
+      <% } %>
+      <span class="likes-box">
+        <img src="/thumbsup.png" alt="">
+      <p class="likes-circle">20</p>
+    </span>
+    <span class="likes-box">
+
+    <p class="likes-circle">5</p>
+    </div>
+    <div class="all-quizzes-grid single-quiz ">
+      <p>How smart am I?</p>
+      <p>Mark Maloni</p>
+      <p>01-21-2022</p>
+      <span class="likes-box">
+        <img src="/thumbsup.png" alt="">
+      <p class="likes-circle">14</p>
+    </span>
+    <span class="likes-box">
+
+    <p class="likes-circle">4</p>
+    </div>
+    <div class="all-quizzes-grid single-quiz ">
+      <p>Am I a potato?</p>
+      <p>Rebecca43</p>
+      <p>01-21-2022</p>
+      <span class="likes-box">
+        <img src="/thumbsup.png" alt="">
+      <p class="likes-circle">12</p>
+    </span>
+    <span class="likes-box">
+
+    <p class="likes-circle">5</p>
+    </div>
+    <div class="all-quizzes-grid single-quiz ">
+      <p>Are you a mermaid?</p>
+      <p>Paloni88</p>
+      <p>01-21-2022</p>
+      <span class="likes-box">
+        <img src="/thumbsup.png" alt="">
+      <p class="likes-circle">26</p>
+    </span>
+    <span class="likes-box">
+
+    <p class="likes-circle">5</p>
+    </div>
+    <div class="all-quizzes-grid single-quiz ">
+      <p>Are you a dog?>
+      <p>Pascal96</p>
+      <p>01-21-2022</p>
+      <span class="likes-box">
+        <img src="/thumbsup.png" alt="">
+      <p class="likes-circle">5</p>
+    </span>
+    <span class="likes-box">
+
+    <p class="likes-circle">1</p>
+    </div>
+    <div class="all-quizzes-grid single-quiz ">
+      <p>Are you a dolphin?</p>
+      <p>Sarah12</p>
+      <p>01-21-2022</p>
+      <span class="likes-box">
+        <img src="/thumbsup.png" alt="">
+      <p class="likes-circle">14</p>
+    </span>
+    <span class="likes-box">
+    <p class="likes-circle">5</p>
+    </div>
+
+
+    <div class="all-quizzes-grid single-quiz ">
+      <p>Do you look like a parrot?</p>
+      <p>John2922</p>
+      <p>01-21-2022</p>
+      <span class="likes-box">
+        <img src="/thumbsup.png" alt="">
+      <p class="likes-circle">20</p>
+    </span>
+    <span class="likes-box">
+
+    <p class="likes-circle">3</p>
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="footer-top">
+        <p>COPYRIGHT @ 2022 QUIZ APP LTC</p>
+    </div>
+   <div class="footer-bot">
+    <img src="/facebook.png" alt="">
+    <img src="/instagram.png" alt="">
+    <img src="/linkedin.png" alt="">
+    <img src="/github.png" alt="">
+    <img src="/twitter.png" alt="">
+   </div>
+  </footer>
+</body>
+</html>
+>>>>>>> refs/remotes/origin/master
