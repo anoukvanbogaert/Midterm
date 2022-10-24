@@ -19,6 +19,24 @@ router.get("/", (req, res) => {
       res.status(500).json({ error: err.message });
     });
 });
+router.get("/login/:id", (req, res) => {
+  let id = req.params.id;
+  userQueries
+    .getUserWithId(id)
+    .then((user) => {
+      res.cookie("userId", user.id);
+      res.cookie("userName", user.name);
+      res.redirect("/");
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
+router.get("/logout", (req, res) => {
+  res.clearCookie("userId");
+  res.redirect("/");
+});
 
 router.get("/login/:id", (req, res) => {
   let id = req.params.id;

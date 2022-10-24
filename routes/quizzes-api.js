@@ -5,6 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
+
 const express = require("express");
 const router = express.Router();
 const quizQueries = require("../db/queries/helpers");
@@ -13,6 +14,7 @@ const quizQueries = require("../db/queries/helpers");
 router.get("/", (req, res) => {
   let userId = req.cookies.userId;
   let userName = req.cookies.userName;
+
   quizQueries.getQuizzes().then((quizzes) => {
     const templateVars = {
       quizzes,
@@ -41,6 +43,8 @@ router.get("/", (req, res) => {
     });
 });
 
+
+// Create a new quiz
 router.get("/create", (req, res) => {
   let userId = req.cookies.userId;
   let userName = req.cookies.userName;
@@ -51,6 +55,8 @@ router.get("/create", (req, res) => {
   res.render("createquiz", templateVars);
 });
 
+
+// User owned quizzes (must be logged in)
 router.get("/myQuizzes", (req, res) => {
   let userId = req.cookies.userId;
   let userName = req.cookies.userName;
@@ -90,6 +96,18 @@ router.get("/:id", (req, res) => {
   quizQueries
     .getUserQuizzes(id)
     .then((quizzes) => {
+      res.json({ quizzes });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
+// Do a quiz
+router.get('/quizzes/:id/takequiz', (req, res) => {
+  const {id} = req.params;
+  quizQueries.getQuestionsForQuiz(id)
+    .then(quizzes => {
       res.json({ quizzes });
     })
     .catch((err) => {
