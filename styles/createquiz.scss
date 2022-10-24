@@ -6,15 +6,39 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin: 0;
   height: 100vh;
 
   background-color: rgba(248, 238, 238, 0.97);
-  background-image: url("./istockphoto-467512590-612x612\ copy.jpg");
+  background-image: url("../images/paperbackGround.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  gap: 20px;
+
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  padding: 25px;
+  background-color: #ebebeb;
+  opacity: 70%;
+  width: 50vw;
+  margin-left: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
 .nav {
   position: fixed;
   background-color: rgb(205, 201, 201);
@@ -70,76 +94,30 @@ ul li:not(:last-child)::after {
   justify-content: center;
   gap: 20px;
 }
-
-.logo-img {
-  width: 100px;
-  height: 50px;
-  margin-left: 50px;
-}
-
-.all-quizzes-container {
-  width: 90%;
-  margin: auto;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: rgb(237, 224, 224);
-  font-family: "Spicy Rice", cursive;
-  font-weight: 100;
-  text-align: center;
-  overflow: auto;
-  max-height: 50vh;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
-.all-quizzes-container-title {
-  height: 50px;
-  margin-top: 100px;
-  font-family: "Spicy Rice", cursive;
-}
-
-.all-quizzes-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 0.5fr 0.5fr;
+.header {
+  position: relative;
+  margin-top: 50px;
   height: 100px;
-  justify-self: center;
-}
-
-.all-quizzes-grid h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(219, 148, 26, 0.661);
-  font-size: 30px;
+  margin-bottom: 150px;
 }
 
-.all-quizzes-container-title {
-  text-align: center;
-  font-size: 30px;
+.header-text {
+  margin-top: 150px;
+  font-size: 45px;
+  letter-spacing: 2.5px;
+  font-family: "Spicy Rice", cursive;
 }
 
-.single-quiz {
-  padding: 10px;
-  border-bottom: 1px solid black;
-  font-size: 15px;
-  font-weight: 600;
-  font-family: "Source Sans 3", sans-serif;
-}
+.header-pencil {
+  position: absolute;
+  top: 20px;
+  margin-left: 50px;
+  height: 300px;
 
-.quiz-img {
-  width: 70px;
-  height: 30px;
-}
-.likes-box {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  gap: 10px;
-}
-.likes-circle {
-  padding: 10px;
-  width: 40px;
-  border-radius: 50%;
-  background-color: rgba(170, 165, 165, 0.517);
+  transform: rotate(25deg);
 }
 
 .logo-img {
@@ -148,14 +126,20 @@ ul li:not(:last-child)::after {
   margin-left: 50px;
 }
 
-/* Footer css */
-
-.footer {
-  width: 100vw;
+.form-question1 {
   display: flex;
-  justify-content: center;
-  gap: 20px;
   align-items: center;
-  height: 5vh;
-  background-color: rgb(205, 201, 201);
+  gap: 5px;
+  font-size: 14px;
+}
+.form-question1 input {
+  height: 25px;
+  width: 150px;
+}
+
+.form-question1 img {
+  padding: 10px;
+
+  height: 50px;
+  width: 50px;
 }

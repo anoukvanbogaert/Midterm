@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <% for (let quiz of userQuizzes) { %>
+
+    <div class="all-quizzes-grid single-quiz ">
+      <p><%= quiz.name %></p>
+      <p><%= quiz.user_id %></p>
+      <p><%=quiz.created_at.toLocaleTimeString()
+        %></p>
+      <span class="likes-box">
+      <button class="button-thumb"><img src="/images/thumbsup.png" alt=""></button>
+      <p class="likes-circle"><%=quiz.likes%></p>
+    </span>
+    <span class="likes-box">
+
+    <p class="likes-circle"><%=quiz.rating%></p>
+    </div>
+
+
+    <% } %>
+</body>
+</html>

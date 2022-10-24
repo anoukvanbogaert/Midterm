@@ -1,0 +1,20 @@
+<nav class="nav">
+  <a href="/"><img class="logo-img" src="/images/logo.png" alt="logo" /></a>
+  <ul class="nav-links">
+    <li><a href="/quizzes">All Quizzes</a></li>
+    <li><a href="/quizzes/myquizzes">My Quizzes</a></li>
+    <li><a href="/">Home</a></li>
+  </ul>
+  <% if (userId) { %>
+  <div class="nav-user">
+    <img src="/images/user2.png" alt="" />
+    <p><%= userName %></p>
+  </div>
+  <% } else { %>
+  <div class="nav-user">
+    <form action="/">
+      <button>Login</button>
+    </form>
+  </div>
+  <% } %>
+</nav>
