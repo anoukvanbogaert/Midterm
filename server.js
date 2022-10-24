@@ -49,7 +49,6 @@ app.use("/questions", questionsApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-<<<<<<< HEAD
   let userId = req.cookies.userId;
   let userName = req.cookies.userName;
   let templateVars = {
@@ -57,9 +56,6 @@ app.get("/", (req, res) => {
     userName,
   };
   res.render("index", templateVars);
-=======
-  res.render("homepage");
->>>>>>> refs/remotes/origin/master
 });
 
 app.listen(PORT, () => {

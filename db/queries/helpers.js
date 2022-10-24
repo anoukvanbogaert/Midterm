@@ -10,16 +10,9 @@ const getUsers = () => {
 
 // Grab quizzes DB
 const getQuizzes = () => {
-<<<<<<< HEAD
   return db.query("SELECT * FROM quizzes;").then((data) => {
     return data.rows;
   });
-=======
-  return db.query('SELECT * FROM quizzes JOIN users ON users.id = user_id;')
-    .then(data => {
-      return data.rows;
-    });
->>>>>>> refs/remotes/origin/master
 };
 
 // Grab quizzes DB
