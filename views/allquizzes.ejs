@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles/allquizzes.css" type="text/css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+  <%- include('partials/_navbar') %>
+
+  <div class="all-quizzes-container-title">
+    <h1>All Quizzes</h1>
+  </div>
+
+  <div class="all-quizzes-container">
+
+    <div class="all-quizzes-grid table-title-grid">
+      <h3>Title</h3>
+      <h3>User</h3>
+      <h3>Creation Date</h3>
+      <h3>Likes</h3>
+      <h3>Rating</h3>
+    </div>
+
+    <% for (let quiz of quizzes) { %>
+
+      <div class="all-quizzes-grid single-quiz ">
+        <p><%= quiz.name %></p>
+        <p><%= quiz.user_id %></p>
+        <p><%=quiz.created_at.toLocaleTimeString()
+          %></p>
+        <span class="likes-box">
+        <button class="button-thumb"><img src="/images/thumbsup.png" alt=""></button>
+        <p class="likes-circle"><%=quiz.likes%></p>
+      </span>
+      <span class="likes-box">
+
+      <p class="likes-circle"><%=quiz.rating%></p>
+      </div>
+
+
+      <% } %>
+    </div>
+
+    <%- include('partials/_footer') %>
+</body>
+</html>
+
+

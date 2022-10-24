@@ -1,9 +1,12 @@
 -- Users table seeds here (Example)
 INSERT INTO users (name, email) VALUES ('lindsey', 'lindsey@lhl.ca'); -- ID 1
 INSERT INTO users (name, email) VALUES ('Paris', 'paris@email.com'); -- ID 2
+INSERT INTO users (name, email) VALUES ('bondy', 'bondy@lhl.ca'); -- ID 3
 
 -- QUIZ 1 - ID 1
 INSERT INTO quizzes (name, user_id) VALUES ('how smart am I', 1);
+INSERT INTO quizzes (name, user_id) VALUES ('TEST FROM DB 1', 2);
+INSERT INTO quizzes (name, user_id) VALUES ('TEST FROM DB 2', 3);
 
 INSERT INTO questions (question, option_1, option_2, option_3, option_4, quiz_id)
 VALUES ('Whats the capital of Germany', 'Paris', 'Berlin', 'Brussels', 'Amsterdam', 1),

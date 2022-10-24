@@ -14,7 +14,20 @@
     <title>Quiz App</title>
   </head>
   <body>
-    <%- include('partials/_navbar') %>
+    <nav class="nav">
+
+     <a href="/"><img class="logo-img" src="/images/logo.png" alt="logo" /></a>
+
+      <ul class="nav-links">
+        <li><a href="/quizzes">All Quizzes</a></li>
+        <li><a href="#">My Quizzes</a></li>
+        <li><a href="#">Home</a></li>
+      </ul>
+      <div class="nav-user">
+        <img src="/images/user2.png" alt="" />
+        <p>John</p>
+      </div>
+    </nav>
     <section class="home-header">
       <div class="home-header-top">
 
@@ -35,7 +48,11 @@
         <button><span>All Quizzes!</span></button>
     </main>
     </form>
+
+
+
+
     </section>
-    <%- include('partials/_footer') %>
+    <%- include('partials/_navbar') %>
   </body>
 </html>

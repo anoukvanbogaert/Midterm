@@ -1,6 +1,20 @@
-// See: https://sass-lang.com/
+/* BODY */
+* {
+  box-sizing: border-box;
+}
 
-body,
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0;
+  height: 100vh;
+
+  background-color: red;
+  background-image: url("/images/istockphoto-467512590-612x612\ copy.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 html {
   margin: 0;
 }

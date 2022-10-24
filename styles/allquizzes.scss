@@ -11,10 +11,11 @@ body {
   height: 100vh;
 
   background-color: rgba(248, 238, 238, 0.97);
-  background-image: url("/images/istockphoto-467512590-612x612\ copy.jpg");
+  background-image: url("../images/paperbackGround.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 .nav {
   position: fixed;
   background-color: rgb(205, 201, 201);
@@ -158,4 +159,10 @@ ul li:not(:last-child)::after {
   align-items: center;
   height: 5vh;
   background-color: rgb(205, 201, 201);
+}
+
+.button-thumb {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
