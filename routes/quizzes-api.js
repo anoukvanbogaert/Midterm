@@ -5,7 +5,7 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const { request } = require("express");
+
 const express = require("express");
 const router = express.Router();
 const quizQueries = require("../db/queries/helpers");
@@ -14,34 +14,35 @@ const quizQueries = require("../db/queries/helpers");
 router.get("/", (req, res) => {
   let userId = req.cookies.userId;
   let userName = req.cookies.userName;
+
+  quizQueries.getQuizzes().then((quizzes) => {
+    const templateVars = {
+      quizzes,
+      userId,
+      userName,
+    };
+
+    // res.json({ quizzes });
+    res.render("allquizzes", templateVars);
+  });
+});
+
+// Get ALL quizzes
+router.get("/", (req, res) => {
   quizQueries
     .getQuizzes()
     .then((quizzes) => {
       const templateVars = {
         quizzes,
-        userId,
-        userName,
-      };
-
-      // res.json({ quizzes });
-      res.render("allquizzes", templateVars);
-    });
-});
-
-// Get ALL quizzes
-router.get('/', (req, res) => {
-  quizQueries.getQuizzes()
-    .then(quizzes => {
-      const templateVars = {
-        quizzes
       };
       console.log(templateVars);
-      res.render('allquizzes', templateVars);
+      res.render("allquizzes", templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
 });
+
 
 // Create a new quiz
 router.get("/create", (req, res) => {
@@ -53,6 +54,7 @@ router.get("/create", (req, res) => {
   };
   res.render("createquiz", templateVars);
 });
+
 
 // User owned quizzes (must be logged in)
 router.get("/myQuizzes", (req, res) => {
@@ -74,7 +76,6 @@ router.post("/", (req, res) => {
   console.log(req.body);
   //need to add more stuff
   let quizName = req.body.name;
-  console.log(req.body);
   let userId = req.cookies.userId;
   quizQueries
     .addQuiz(quizName, userId)
@@ -109,10 +110,8 @@ router.get('/quizzes/:id/takequiz', (req, res) => {
     .then(quizzes => {
       res.json({ quizzes });
     })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
     });
 });
 

@@ -23,15 +23,15 @@ CREATE TABLE quizzes (
 CREATE TABLE questions (
   id SERIAL PRIMARY KEY NOT NULL,
   question TEXT,
+  correct_answer TEXT,
   option_1 TEXT,
   option_2 TEXT,
   option_3 TEXT,
-  option_4 TEXT,
   quiz_id INTEGER NOT NULL REFERENCES quizzes(id) ON DELETE CASCADE
 );
 
--- AKA THE RIGHT ANSWERS
 CREATE TABLE answers (
+id SERIAL PRIMARY KEY NOT NULL,
 result_id INEGER NOT NULL REFERENCES results(id) ON DELETE CASCADE,
 question_id INTEGER NOT NULL REFERENCES questions(id) ON DELETE CASCADE,
 user_answer TEXT
@@ -41,7 +41,7 @@ CREATE TABLE results (
   id SERIAL PRIMARY KEY NOT NULL,
   quiz_id INTEGER NOT NULL REFERENCES quizzes(id) ON DELETE CASCADE,
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-  answer INTEGER NOT NULL REFERENCES answers(id) ON DELETE CASCADE,
+  answer_id INTEGER NOT NULL REFERENCES answers(id) ON DELETE CASCADE,
   score INTEGER
 );
 

@@ -128,18 +128,20 @@ ul li:not(:last-child)::after {
 
 .form-question1 {
   display: flex;
-  align-items: center;
-  gap: 5px;
+  justify-content: center;
+  align-items: end;
+  gap: 20px;
   font-size: 14px;
 }
+
 .form-question1 input {
   height: 25px;
-  width: 150px;
+  width: 100px;
+  text-align: center;
 }
 
 .form-question1 img {
   padding: 10px;
-
   height: 50px;
   width: 50px;
 }
