@@ -8,11 +8,19 @@ const getUsers = () => {
   });
 };
 
-// Grab quizzes DB
+// Get ALL quizzes
 const getQuizzes = () => {
   return db.query("SELECT * FROM quizzes;").then((data) => {
     return data.rows;
   });
+};
+
+// Get 1 quiz from quiz_id
+const getQuizById = (id) => {
+  return db.query("SELECT * FROM quizzes WHERE id = $1", [id])
+    .then((data) => {
+      return data.rows[0];
+    });
 };
 
 // Grab quizzes DB
@@ -66,4 +74,5 @@ module.exports = {
   getUserQuizzes,
   addQuiz,
   getUserWithId,
+  getQuizById
 };
