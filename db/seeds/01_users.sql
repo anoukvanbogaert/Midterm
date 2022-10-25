@@ -1,17 +1,46 @@
--- Users table seeds here (Example)
-INSERT INTO users (name, email) VALUES ('Lindsey', 'lindsey@lhl.ca'); -- ID 1
-INSERT INTO users (name, email) VALUES ('Paris', 'paris@email.com'); -- ID 2
-INSERT INTO users (name, email) VALUES ('Bondy', 'bondy@lhl.ca'); -- ID 3
+-- USERS
+INSERT INTO users (name, email) 
+VALUES 
+('Paris', 'paris@email.com'),
+('Lindsey', 'lindsey@lhl.ca'), 
+('Bondy', 'bondy@lhl.ca'); 
+
 
 -- QUIZZES 
-INSERT INTO quizzes (name, user_id) VALUES ('how smart am I', 1);
-INSERT INTO quizzes (name, user_id) VALUES ('TEST FROM DB 1', 2);
-INSERT INTO quizzes (name, user_id) VALUES ('TEST FROM DB 2', 3);
+INSERT INTO quizzes (name, user_id, likes, rating) 
+VALUES 
+('Easy general knowledge', 1, 18, 4.5 ),
+('Geography Trivia', 2, 35, 4.2),
+('Music Trivia', 3, 12, 3.5);
 
--- QUIZ QUESTIONS 
-INSERT INTO questions (question, option_1, option_2, option_3, option_4, quiz_id)
-VALUES ('Whats the capital of Germany', 'Paris', 'Berlin', 'Brussels', 'Amsterdam', 1),
-('How many people live in canada', 'Less than 20 million', '20 million - 30 million', '30 million-50 million', 'more than 20 million', 1);
+
+-- QUESTIONS
+INSERT INTO questions (quiz_id, question, correct_answer, option_1, option_2, option_3)
+VALUES 
+-- QUIZ QUESTIONS FOR QUIZ 1
+(1, 'Which one of the following scientists is known for their contributions to the science of evolution?', 'Marie Curie', 'Thomas Edison', 'Stephen Hawking', 'Charles Darwin'),
+(1, 'Which fruit is associated with Isaac Newton?', 'Apple', 'Pear', 'Pineapple', 'Banana'),
+(1, 'Which one of the following actors did not play James Bond?', 'Colin Firth', 'Daniel Craig', 'Pierce Brosnan', 'Sean Connery'),
+-- QUIZ QUESTIONS FOR QUIZ 2
+(2, 'Whats the capital of Germany', 'Paris', 'Berlin', 'Brussels', 'Amsterdam'),
+(2, 'How many people live in canada', 'Less than 20 million', '20 million - 30 million', '30 million-50 million', 'more than 20 million'),
+(2, 'Arnold Schwarzenegger was the governor of which American state?', 'Florida', 'Texas', 'California', 'Montana'),
+-- QUIZ QUESTIONS FOR QUIZ 3
+(3, 'How many lines are on the Spotify logo?', '3', '4', '2', '5'),
+(3, 'What was Madonnas first top 10 hit?', 'Holiday', 'Like a Prayer', 'La Isla Bonita', 'Hung Up'),
+(3, 'Which classical composer was deaf?', 'Beethoven', 'Mozart', 'Bach', 'Chopin');
+
+-- RESULTS
+INSERT INTO results (quiz_id, user_id, answer_id, score)
+VALUES 
+(1, 2, 1, 1/3),
+(1, 3, 2, 2/3),
+(2, 1, 3, 1/3),
+(2, 3, 4, 3/3),
+(3, 1, 5, 2/3),
+(3, 2, 6, 3/3);
+
+-- ANSWERS tbd
 
 
 
