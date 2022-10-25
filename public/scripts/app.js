@@ -1,10 +1,11 @@
 /* eslint-disable no-undef */
 
-$("document").ready(function () {
+$("document").ready(function() {
   let total = 0;
   let attempts = 0;
   let numberOfQuestions = $("div[class='card-header']").length;
   let correctAwnser = "DOG";
+  console.log(req.params);
 
   $(".testbutton").click(function () {
     $(this).toggleClass("hightlight");
@@ -22,7 +23,8 @@ $("document").ready(function () {
   });
   $("#quizSubmit").submit(function (event) {
     $(".testbutton").prop("disabled", true);
-
+    const highlighted = $('body .highlight');
+    console.log(highlighted);
     event.preventDefault();
     attempts++;
 
@@ -30,7 +32,7 @@ $("document").ready(function () {
       $(".testbutton").css("color", "black");
       $("#score").append(`<div>
       <p>Attempts : ${attempts}</p>
-      <h1 class="green">YOUR ON FIRE!🔥 </h1>
+      <h1 class="green">YOU'RE ON FIRE!🔥 </h1>
       <h2>${total}/${numberOfQuestions} </h2>
       <button class='backhHome'><a href="/quizzes/myquizzes">Back to My Quizzes</a></button>
       </div>`);

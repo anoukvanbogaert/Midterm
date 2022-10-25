@@ -130,14 +130,16 @@ router.get('/quiz/:id', (req, res) => {
 router.get('/quiz/:id/takequiz', (req, res) => {
   const {id} = req.params;
   const userId = req.cookies.userId;
+  let userName = req.cookies.userName;
   quizQueries.getQuestionsForQuiz(id) // object of quiz name and questions
     .then(questionsObject => {
       const templateVars = {
+        userName,
         userId, // index 0 in object templateVars
         questionsObject // index 1 in object templateVars and an array of objects per question
       };
       console.log('questionsobject', questionsObject, 'templatevars', templateVars);
-      res.render("actuallyTakeQuiz", templateVars);
+      res.render("actuallyTakingQuiz", templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
