@@ -17,7 +17,7 @@ const getQuizzes = () => {
 
 // Get 1 quiz from quiz_id
 const getQuizById = (id) => {
-  return db.query("SELECT * FROM quizzes WHERE id = $1", [id])
+  return db.query("SELECT quizzes.*, users.name as username FROM quizzes JOIN users On users.id = user_id WHERE quizzes.id = $1", [id])
     .then((data) => {
       return data.rows[0];
     });

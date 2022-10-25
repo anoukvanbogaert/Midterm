@@ -107,24 +107,33 @@ router.get("/myquizzes/:id", (req, res) => {
 router.get('/quiz/:id', (req, res) => {
   const {id} = req.params;
   quizQueries.getQuizById(id)
-    .then(thisQuiz => {
-      res.json({ thisQuiz });
+    .then(quizName => {
+      const templateVars = {
+        id,
+        quizName: quizName.name,
+        userName: quizName.username
+      };
+      console.log(templateVars);
+      res.render("takeQuiz", templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
 });
 
+
 // Do a quiz
 router.get('/quiz/:id/takequiz', (req, res) => {
   const {id} = req.params;
-  quizQueries.getQuestionsForQuiz(id)
-    .then(quizzes => {
-      res.json({ quizzes });
+  quizQueries.getQuestionsForQuiz(id) // object of quiz name and questions
+    .then(questionsObject => {
+      const templateVars = questionsObject;
+      res.render("takeQuiz", templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
+
 });
 
 module.exports = router;
