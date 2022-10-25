@@ -15,7 +15,7 @@ VALUES
 
 
 -- QUESTIONS
-INSERT INTO questions (quiz_id, question,correct_answer option_1, option_2, option_3)
+INSERT INTO questions (quiz_id, question,correct_answer, option_1, option_2, option_3)
 VALUES
 -- QUIZ QUESTIONS FOR QUIZ 1
 (1, 'Which one of the following scientists is known for their contributions to the science of evolution?', 'Marie Curie', 'Thomas Edison', 'Stephen Hawking', 'Charles Darwin'),
