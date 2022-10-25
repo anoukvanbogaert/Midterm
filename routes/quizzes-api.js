@@ -125,7 +125,6 @@ router.get('/quiz/:id', (req, res) => {
     });
 });
 
-
 // Do a quiz
 router.get('/quiz/:id/takequiz', (req, res) => {
   const {id} = req.params;
@@ -148,9 +147,13 @@ router.get('/quiz/:id/takequiz', (req, res) => {
 });
 
 // actually take quiz button redirects to results
-router.post('/results', (req, res) => {
-  const id = req.params;
-  res.redirect(`quiz/${id}/takequiz`);
+// Want to check the quiz answers here and then render the results page with the correct info
+router.get('/results/:id', (req, res) => {
+  const {id} = req.params;
+
+  quizQueries.checkQuizAnswers(id);
+  console.log(quizQueries.checkQuizAnswers);
+  // res.render("templateForShowingResults");
 });
 
 module.exports = router;

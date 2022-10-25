@@ -66,6 +66,20 @@ const getUserWithId = (id) => {
     });
 };
 
+const checkQuizAnswers = (id) => {
+  return db
+    .query("SELECT questions.id, answers.user_answer FROM answers JOIN questions ON questions.id = question_id WHERE question_id = $1", [id])
+    .then((data) => {
+      console.log(data.rows);
+      return data.rows[0];
+    })
+    .then((obj) => {
+      let correctAnswers = [];
+      let userAnswers = [];
+      console.log(obj);
+    });
+};
+
 // export helper functions
 module.exports = {
   getUsers,
@@ -74,5 +88,6 @@ module.exports = {
   getUserQuizzes,
   addQuiz,
   getUserWithId,
-  getQuizById
+  getQuizById,
+  checkQuizAnswers
 };
