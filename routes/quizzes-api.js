@@ -106,10 +106,14 @@ router.get("/myquizzes/:id", (req, res) => {
 // Show the selected quiz
 router.get('/quiz/:id', (req, res) => {
   const {id} = req.params;
+  let userName = req.cookies.userName;
+  let userId = req.cookies.userId;
   quizQueries.getQuizById(id)
     .then(quizName => {
       const templateVars = {
         id,
+        userId,
+        quiz: id,
         quizName: quizName.name,
         userName: quizName.username
       };
@@ -125,15 +129,28 @@ router.get('/quiz/:id', (req, res) => {
 // Do a quiz
 router.get('/quiz/:id/takequiz', (req, res) => {
   const {id} = req.params;
+  const userId = req.cookies.userId;
+  let userName = req.cookies.userName;
   quizQueries.getQuestionsForQuiz(id) // object of quiz name and questions
     .then(questionsObject => {
-      const templateVars = questionsObject;
-      res.render("takeQuiz", templateVars);
+      const templateVars = {
+        userId,
+        userName,
+        quiz: id,
+        questionsObject,
+      };
+      console.log(questionsObject);
+      res.render("actuallyTakeQuiz", templateVars);
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
     });
+});
 
+// actually take quiz button redirects to results
+router.post('/results', (req, res) => {
+  const id = req.params;
+  res.redirect(`quiz/${id}/takequiz`);
 });
 
 module.exports = router;
