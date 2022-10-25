@@ -15,7 +15,7 @@ VALUES
 
 
 -- QUESTIONS
-INSERT INTO questions (quiz_id, question, correct_answer, option_1, option_2, option_3)
+INSERT INTO questions (quiz_id, question,, option_1, option_2, option_3)
 VALUES 
 -- QUIZ QUESTIONS FOR QUIZ 1
 (1, 'Which one of the following scientists is known for their contributions to the science of evolution?', 'Marie Curie', 'Thomas Edison', 'Stephen Hawking', 'Charles Darwin'),
@@ -31,14 +31,6 @@ VALUES
 (3, 'Which classical composer was deaf?', 'Beethoven', 'Mozart', 'Bach', 'Chopin');
 
 -- RESULTS
-INSERT INTO results (quiz_id, user_id, answer_id, score)
-VALUES 
-(1, 2, 1, 1/3),
-(1, 3, 2, 2/3),
-(2, 1, 3, 1/3),
-(2, 3, 4, 3/3),
-(3, 1, 5, 2/3),
-(3, 2, 6, 3/3);
 
 -- ANSWERS tbd
 
