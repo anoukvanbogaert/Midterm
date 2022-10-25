@@ -1,8 +1,6 @@
 // load .env data into process.env
 require("dotenv").config();
 
-console.log("hello");
-
 // Web server config
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
