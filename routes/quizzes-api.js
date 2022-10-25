@@ -127,8 +127,8 @@ router.get('/quiz/:id/takequiz', (req, res) => {
   quizQueries.getQuestionsForQuiz(id) // object of quiz name and questions
     .then(questionsObject => {
       const templateVars = {
-        userId,
-        questionsObject // this is multiple objects in one array
+        userId, // index 0 in object templateVars
+        questionsObject // index 1 in object templateVars and an array of objects per question
       };
       console.log('questionsobject', questionsObject, 'templatevars', templateVars);
       res.render("actuallyTakeQuiz", templateVars);
