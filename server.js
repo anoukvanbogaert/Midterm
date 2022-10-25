@@ -56,6 +56,16 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
+app.get("/actually", (req, res) => {
+  let userId = req.cookies.userId;
+  let userName = req.cookies.userName;
+  let templateVars = {
+    userId,
+    userName,
+  };
+  res.render("actuallyTakingQuiz", templateVars);
+});
+
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
