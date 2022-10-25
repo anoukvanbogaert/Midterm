@@ -166,3 +166,13 @@ ul li:not(:last-child)::after {
   border: none;
   cursor: pointer;
 }
+
+button {
+  padding: 25px;
+  background-color: lightblue;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
