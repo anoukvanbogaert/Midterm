@@ -90,7 +90,7 @@ router.post("/", (req, res) => {
 
 // Get user owned quizzes
 // Need params ID for quiz
-router.get("/:id", (req, res) => {
+router.get("/myquizzes/:id", (req, res) => {
   const { id } = req.params;
   console.log(id);
   quizQueries
@@ -103,8 +103,20 @@ router.get("/:id", (req, res) => {
     });
 });
 
+// Show the selected quiz
+router.get('/quiz/:id', (req, res) => {
+  const {id} = req.params;
+  quizQueries.getQuizById(id)
+    .then(thisQuiz => {
+      res.json({ thisQuiz });
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message });
+    });
+});
+
 // Do a quiz
-router.get('/quizzes/:id/takequiz', (req, res) => {
+router.get('/quiz/:id/takequiz', (req, res) => {
   const {id} = req.params;
   quizQueries.getQuestionsForQuiz(id)
     .then(quizzes => {
