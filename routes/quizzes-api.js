@@ -104,15 +104,21 @@ router.get('/quiz/:id', (req, res) => {
   const {id} = req.params;
   let userName = req.cookies.userName;
   let userId = req.cookies.userId;
+  let number;
+  quizQueries.countQuestions(id)
+    .then(numberOfQuestions => {
+      number = numberOfQuestions;
+    });
   quizQueries.getQuizById(id)
     .then(quizName => {
       const templateVars = {
-        id,
+        number,
         userId,
         quiz: id,
         quizName: quizName.name,
         userName: quizName.username
       };
+      console.log(templateVars);
       res.render("takeQuiz", templateVars);
     })
     .catch((err) => {
