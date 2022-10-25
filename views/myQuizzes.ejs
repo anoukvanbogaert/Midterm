@@ -14,7 +14,7 @@
     <% for (let quiz of userQuizzes) { %>
 
       <div class="all-quizzes-grid single-quiz ">
-        <form action="/quizzes/quiz/<%= quiz.id %>/takequiz">
+        <form action="/quizzes/quiz/<%= quiz.id %>">
           <button><%= quiz.name %></button>
         </form>
 

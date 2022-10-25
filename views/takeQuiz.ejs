@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="/styles/allquizzes.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/quiz.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
@@ -11,12 +11,17 @@
     <%- include('partials/_navbar') %>
 
     <div class="all-quizzes-container">
+      <div class="single-quiz">
+        <div>
+          <p><%= quiz %></p>
+          <p>questions</p>
+          <p>UserName</p>
+        </div>
 
-
-      <div class="all-quizzes-grid single-quiz ">
         <form action="/quizzes/quiz/<%= quiz.id %>/takequiz">
           <button>TAKE QUIZ</button>
         </form>
+      </div>
     </div>
     <%- include('partials/_footer') %>
   </body>
