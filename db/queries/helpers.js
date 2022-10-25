@@ -48,7 +48,7 @@ const addQuiz = (name, user_id) => {
 const getQuestionsForQuiz = (id) => {
   return db
     .query(
-      "SELECT quizzes.name, question, option_1, option_2, option_3, option_4 FROM questions JOIN quizzes ON quizzes.id = quiz_id WHERE quiz_id = $1",
+      "SELECT quizzes.id as id, question, option_1, option_2, option_3, option_4 FROM questions JOIN quizzes ON quizzes.id = quiz_id WHERE quiz_id = $1",
       [id]
     )
     .then((data) => {
