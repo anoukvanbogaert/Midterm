@@ -79,21 +79,27 @@ ul li:not(:last-child)::after {
 }
 
 .all-quizzes-container {
-  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 900px;
   margin: auto;
   padding: 30px;
   border-radius: 5px;
-  background-color: rgb(237, 224, 224);
+  background-image: url(../images/quizbackground.png);
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: "Spicy Rice", cursive;
   font-weight: 100;
   text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
+
 .single-quiz {
+  display: flex;
+  flex-direction: column;
   padding: 10px;
-  border-bottom: 1px solid black;
-  font-size: 15px;
+  font-size: 35px;
   font-weight: 600;
   font-family: "Source Sans 3", sans-serif;
 }
@@ -106,4 +112,41 @@ ul li:not(:last-child)::after {
   align-items: center;
   height: 5vh;
   background-color: rgb(205, 201, 201);
+}
+
+.questions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  font-size: 15px;
+  grid-gap: 25px;
+}
+
+button {
+  padding: 20px;
+  background-color: lightblue;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.bounce3 {
+  animation: bounce3 1s ease infinite;
+
+  @keyframes bounce3 {
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+      transform: translateY(0px);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-6px);
+    }
+  }
 }

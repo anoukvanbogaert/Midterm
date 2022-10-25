@@ -13,13 +13,21 @@
     <div class="all-quizzes-container">
       <div class="single-quiz">
         <div>
-          <p><%= quiz %></p>
-          <p>questions</p>
-          <p>UserName</p>
+          <h1>Quizname:<%= quiz %></h1>
+          <div class="questions">
+            <p>question 1</p>
+            <p>questions 2</p>
+            <p>questions 3</p>
+            <p>questions 4</p>
+            <p>questions 5</p>
+            <p>questions 6</p>
+          </div>
+
+          <p>By UserName</p>
         </div>
 
         <form action="/quizzes/quiz/<%= quiz.id %>/takequiz">
-          <button>TAKE QUIZ</button>
+          <button class="bounce3">TAKE QUIZ</button>
         </form>
       </div>
     </div>
