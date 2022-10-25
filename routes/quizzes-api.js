@@ -35,7 +35,6 @@ router.get("/", (req, res) => {
       const templateVars = {
         quizzes,
       };
-      console.log(templateVars);
       res.render("allquizzes", templateVars);
     })
     .catch((err) => {
@@ -62,7 +61,6 @@ router.get("/myQuizzes", (req, res) => {
   let userName = req.cookies.userName;
 
   quizQueries.getUserQuizzes(userId).then((userQuizzes) => {
-    console.log(userQuizzes);
     const templateVars = {
       userQuizzes,
       userId,
@@ -73,7 +71,6 @@ router.get("/myQuizzes", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  console.log(req.body);
   //need to add more stuff
   let quizName = req.body.name;
   let userId = req.cookies.userId;
@@ -92,7 +89,6 @@ router.post("/", (req, res) => {
 // Need params ID for quiz
 router.get("/myquizzes/:id", (req, res) => {
   const { id } = req.params;
-  console.log(id);
   quizQueries
     .getUserQuizzes(id)
     .then((quizzes) => {
@@ -117,7 +113,6 @@ router.get('/quiz/:id', (req, res) => {
         quizName: quizName.name,
         userName: quizName.username
       };
-      console.log(templateVars);
       res.render("takeQuiz", templateVars);
     })
     .catch((err) => {
@@ -125,21 +120,17 @@ router.get('/quiz/:id', (req, res) => {
     });
 });
 
-
 // Do a quiz
 router.get('/quiz/:id/takequiz', (req, res) => {
   const {id} = req.params;
   const userId = req.cookies.userId;
-  let userName = req.cookies.userName;
   quizQueries.getQuestionsForQuiz(id) // object of quiz name and questions
     .then(questionsObject => {
       const templateVars = {
         userId,
-        userName,
-        quiz: id,
-        questionsObject,
+        questionsObject // this is multiple objects in one array
       };
-      console.log(questionsObject);
+      console.log('questionsobject', questionsObject, 'templatevars', templateVars);
       res.render("actuallyTakeQuiz", templateVars);
     })
     .catch((err) => {
