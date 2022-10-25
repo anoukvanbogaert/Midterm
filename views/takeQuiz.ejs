@@ -11,14 +11,12 @@
     <%- include('partials/_navbar') %>
 
     <div class="all-quizzes-container">
-    <% for (let quiz of userQuizzes) { %>
+
 
       <div class="all-quizzes-grid single-quiz ">
         <form action="/quizzes/quiz/<%= quiz.id %>/takequiz">
-          <button><%=TAKE QUIZ %></button>
+          <button>TAKE QUIZ</button>
         </form>
-
-      <% } %>
     </div>
     <%- include('partials/_footer') %>
   </body>
