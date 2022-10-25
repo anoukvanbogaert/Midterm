@@ -15,6 +15,14 @@ const getQuizzes = () => {
   });
 };
 
+// count number of questions
+const countQuestions = (id) => {
+  return db.query('SELECT questions.* FROM questions WHERE quiz_id = $1', [id])
+    .then((data) => {
+      return data.rows.length;
+    });
+};
+
 // Get 1 quiz from quiz_id
 const getQuizById = (id) => {
   return db.query("SELECT quizzes.*, users.name as username FROM quizzes JOIN users On users.id = user_id WHERE quizzes.id = $1", [id])
@@ -74,5 +82,6 @@ module.exports = {
   getUserQuizzes,
   addQuiz,
   getUserWithId,
-  getQuizById
+  getQuizById,
+  countQuestions
 };
