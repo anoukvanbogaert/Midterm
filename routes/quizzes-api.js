@@ -5,7 +5,6 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-
 const express = require("express");
 const router = express.Router();
 const quizQueries = require("../db/queries/helpers");
@@ -42,7 +41,6 @@ router.get("/", (req, res) => {
     });
 });
 
-
 // Create a new quiz
 router.get("/create", (req, res) => {
   let userId = req.cookies.userId;
@@ -53,7 +51,6 @@ router.get("/create", (req, res) => {
   };
   res.render("createquiz", templateVars);
 });
-
 
 // User owned quizzes (must be logged in)
 router.get("/myQuizzes", (req, res) => {
@@ -71,7 +68,17 @@ router.get("/myQuizzes", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  //need to add more stuff
+  console.log(req.body);
+
+  const questions = req.body;
+  for (let i = 0; i < 5; i++) {
+    const question = questions[`question${i + 1}`];
+    const [questionName, correctAnswer, ...options] = question;
+    console.log(`questionName${i + 1}`, questionName);
+    console.log("correctAnswer", correctAnswer);
+    console.log(`options${i + 1}`, options);
+  }
+
   let quizName = req.body.name;
   let userId = req.cookies.userId;
   quizQueries
@@ -100,23 +107,23 @@ router.get("/myquizzes/:id", (req, res) => {
 });
 
 // Show the selected quiz
-router.get('/quiz/:id', (req, res) => {
-  const {id} = req.params;
+router.get("/quiz/:id", (req, res) => {
+  const { id } = req.params;
   let userName = req.cookies.userName;
   let userId = req.cookies.userId;
   let number;
-  quizQueries.countQuestions(id)
-    .then(numberOfQuestions => {
-      number = numberOfQuestions;
-    });
-  quizQueries.getQuizById(id)
-    .then(quizName => {
+  quizQueries.countQuestions(id).then((numberOfQuestions) => {
+    number = numberOfQuestions;
+  });
+  quizQueries
+    .getQuizById(id)
+    .then((quizName) => {
       const templateVars = {
         number,
         userId,
         quiz: id,
         quizName: quizName.name,
-        userName: quizName.username
+        userName: quizName.username,
       };
       console.log(templateVars);
       res.render("takeQuiz", templateVars);
@@ -127,18 +134,24 @@ router.get('/quiz/:id', (req, res) => {
 });
 
 // Do a quiz
-router.get('/quiz/:id/takequiz', (req, res) => {
-  const {id} = req.params;
+router.get("/quiz/:id/takequiz", (req, res) => {
+  const { id } = req.params;
   const userId = req.cookies.userId;
   let userName = req.cookies.userName;
-  quizQueries.getQuestionsForQuiz(id) // object of quiz name and questions
-    .then(questionsObject => {
+  quizQueries
+    .getQuestionsForQuiz(id) // object of quiz name and questions
+    .then((questionsObject) => {
       const templateVars = {
         userName,
         userId, // index 0 in object templateVars
-        questionsObject // index 1 in object templateVars and an array of objects per question
+        questionsObject, // index 1 in object templateVars and an array of objects per question
       };
-      console.log('questionsobject', questionsObject, 'templatevars', templateVars);
+      console.log(
+        "questionsobject",
+        questionsObject,
+        "templatevars",
+        templateVars
+      );
       res.render("actuallyTakingQuiz", templateVars);
     })
     .catch((err) => {
@@ -147,7 +160,7 @@ router.get('/quiz/:id/takequiz', (req, res) => {
 });
 
 // actually take quiz button redirects to results
-router.post('/results', (req, res) => {
+router.post("/results", (req, res) => {
   const id = req.params;
   res.redirect(`quiz/${id}/takequiz`);
 });
