@@ -6,7 +6,8 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
   margin: 0;
   height: 100vh;
 
@@ -16,9 +17,14 @@ body {
   background-size: cover;
 }
 
+.body {
+  display: flex;
+  align-items: center
+}
+
 .all-quizzes-container {
-  width: 80%;
-  margin: 0 auto;
+  width: 90%;
+  margin: auto;
   padding: 10px;
   border-radius: 5px;
   background-color: rgb(237, 224, 224);
@@ -87,8 +93,11 @@ body {
   margin-left: 50px;
 }
 
-.updateMessage {
-  width: 90%;
+#updateMessage {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 50px;
   margin-top: 200px;
   padding: 10px;
@@ -98,8 +107,6 @@ body {
   font-family: "Spicy Rice", cursive;
   font-weight: 100;
   text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 /* Footer css */

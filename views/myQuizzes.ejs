@@ -1,23 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="/styles/allquizzes.css" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- External JS -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <!-- App JS -->
-        <script type="text/javascript" src="/scripts/myQuizzPage.js"></script>
-           <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>Document</title>
-  </head>
-  <body>
-    <%- include('partials/_navbar') %>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="/styles/myQuizzes.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/myQuizzPage.js"></script>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <div class="updateMessage">
+  <title>Document</title>
+</head>
+
+
+<body>
+
+  <%- include('partials/_navbar') %>
+
+    <!-- element 1 in body class -->
+    <div id="updateMessage">
       <p>
         <i class="fa-sharp fa-solid fa-ghost"></i>
         Successfully ghosted your quiz!
@@ -25,38 +35,52 @@
       </p>
     </div>
 
+    <!-- element 2 in body class -->
 
     <div class="all-quizzes-container">
 
-        <div class="all-quizzes-container">
-          <h1>My Quizzes</h1>
-          </div>
-    <% for (let quiz of userQuizzes) { %>
-
-      <div class="all-quizzes-grid single-quiz ">
-        <form action="/quizzes/quiz/<%= quiz.id %>">
-          <button><%= quiz.name %></button>
-        </form>
-
-        <p><%= quiz.user_id %></p>
-        <p><%=quiz.created_at.toLocaleTimeString()
-          %></p>
-        <span class="likes-box">
-        <button class="button-thumb"><img src="/images/thumbsup.png" alt=""></button>
-        <p class="likes-circle"><%=quiz.likes%></p>
-      </span>
-      <span class="likes-box">
-
-      <p class="likes-circle"><%=quiz.rating%></p>
-
-      <form id="update-button" method="POST" action=<%=`/quizzes/${quiz.id}/update`%>><button type="submit" class ="btn" >Ghost it!</button></form>
+      <div class="all-quizzes-container">
+        <h1>My Quizzes</h1>
       </div>
+      <% for (let quiz of userQuizzes) { %>
+
+        <div class="all-quizzes-grid single-quiz ">
+          <form action="/quizzes/quiz/<%= quiz.id %>">
+            <button>
+              <%= quiz.name %>
+            </button>
+          </form>
+
+          <p>
+            <%= quiz.user_id %>
+          </p>
+          <p>
+            <%=quiz.created_at.toLocaleTimeString() %>
+          </p>
+          <span class="likes-box">
+            <button class="button-thumb"><img src="/images/thumbsup.png" alt=""></button>
+            <p class="likes-circle">
+              <%=quiz.likes%>
+            </p>
+          </span>
+          <span class="likes-box">
+
+            <p class="likes-circle">
+              <%=quiz.rating%>
+            </p>
+
+            <form id="update-button" method="POST" action=<%=`/quizzes/${quiz.id}/update`%>><button type="submit"
+                class="btn">Ghost it!</button></form>
+        </div>
 
 
-      <% } %>
+        <% } %>
+
     </div>
 
 
+
     <%- include('partials/_footer') %>
-  </body>
+</body>
+
 </html>

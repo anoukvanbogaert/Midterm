@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       <!-- App CSS -->
-       <link rel="stylesheet" href="/styles/homestyle.css" type="text/css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
-      rel="stylesheet"
-    />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/homestyle.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
+    rel="stylesheet" />
 
 
-    <title>Smarty Party</title>
-  </head>
-  <body>
-    <%- include('partials/_navbar') %>
+  <title>Smarty Party</title>
+</head>
+
+<body>
+  <%- include('partials/_navbar') %>
 
     <section class="home-header">
       <div class="home-header-top">
@@ -23,21 +25,27 @@
         <h1 class="home-header-title">Welcome to Smarty Party</h1>
         <img class="home-header-top-img" src="/images/notepad.png" alt="book" />
       </div class="home-header-middle">
-      <span><h3 class="home-header-middle-title"> What is Smarty Party?</h3></span>
-     <span class="home-header-middle-text"><p>Smarty Party is an application built for people who are looking to put their skills to the test. Have fun taking and contributing to thousands of other quizzes around the world! Give it a name , a few questions , and your ready to go!  Remember , it doesnt matter what your learning , Smarty Partys got your back!</p>
-    </div>
-    <form action="/quizzes/create">
-      <main>
-        <button><span>Create Quiz</span></button>
-    </main>
-  </form>
+      <span>
+        <h3 class="home-header-middle-title"> What is Smarty Party?</h3>
+      </span>
+      <span class="home-header-middle-text">
+        <p>Smarty Party is an application built for people who are looking to put their skills to the test. Have fun
+          taking and contributing to thousands of other quizzes around the world! Give it a name , a few questions , and
+          your ready to go! Remember , it doesnt matter what your learning , Smarty Partys got your back!</p>
+        </div>
+        <form action="/quizzes/create">
+          <main>
+            <button><span>Create Quiz</span></button>
+          </main>
+        </form>
 
-    <form action="/quizzes">
-      <main>
-        <button><span>All Quizzes!</span></button>
-    </main>
-    </form>
+        <form action="/quizzes">
+          <main>
+            <button><span>All Quizzes!</span></button>
+          </main>
+        </form>
     </section>
     <%- include('partials/_footer') %>
-  </body>
+</body>
+
 </html>

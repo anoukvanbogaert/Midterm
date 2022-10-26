@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <link rel="stylesheet" href="/styles/allquizzes.css" type="text/css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
-      rel="stylesheet"
-    />
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/allQuizzesPage.js"></script>
-  </head>
-  <body>
+  <link rel="stylesheet" href="/styles/allquizzes.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
-    <%- include('partials/_navbar') %>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
+    rel="stylesheet" />
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/allQuizzesPage.js"></script>
+</head>
+
+<body>
+
+  <%- include('partials/_navbar') %>
 
     <div class="all-quizzes-container-title">
       <h1>All Quizzes</h1>
@@ -35,26 +37,37 @@
       </div>
 
 
-        <% for (let quiz of quizzes) { %>
+      <% for (let quiz of quizzes) { %>
 
         <div class="all-quizzes-grid single-quiz">
-          <p><%= quiz.name %></p>
-          <p><%= quiz.user_id %></p>
-          <p><%=quiz.created_at.toLocaleTimeString() %></p>
+          <p>
+            <%= quiz.name %>
+          </p>
+          <p>
+            <%= quiz.user_id %>
+          </p>
+          <p>
+            <%=quiz.created_at.toLocaleTimeString() %>
+          </p>
           <span class="likes-box">
             <button class="button-thumb">
               <img class="button-thumb-img" src="/images/thumbsup.png" alt="" />
             </button>
-            <p class="likes-circle"><%=quiz.likes%></p>
+            <p class="likes-circle">
+              <%=quiz.likes%>
+            </p>
           </span>
           <span class="likes-box">
-            <p class="likes-circle"><%=quiz.rating%></p>
+            <p class="likes-circle">
+              <%=quiz.rating%>
+            </p>
           </span>
         </div>
         <% } %>
-      </div>
+    </div>
     </div>
 
     <%- include('partials/_footer') %>
-  </body>
+</body>
+
 </html>
