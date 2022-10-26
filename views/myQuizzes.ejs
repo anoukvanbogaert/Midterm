@@ -37,6 +37,8 @@
       <span class="likes-box">
 
       <p class="likes-circle"><%=quiz.rating%></p>
+
+      <form id="update-button" method="POST" action=<%=`/quizzes/${quiz.id}/update`%>><button type="submit" class ="btn" >Make Private</button></form>
       </div>
 
 

@@ -26,21 +26,6 @@ router.get("/", (req, res) => {
   });
 });
 
-// Get ALL quizzes
-router.get("/", (req, res) => {
-  quizQueries
-    .getQuizzes()
-    .then((quizzes) => {
-      const templateVars = {
-        quizzes,
-      };
-      res.render("allquizzes", templateVars);
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-    });
-});
-
 // Create a new quiz
 router.get("/create", (req, res) => {
   let userId = req.cookies.userId;
@@ -65,44 +50,6 @@ router.get("/myQuizzes", (req, res) => {
     };
     res.render("myQuizzes", templateVars);
   });
-});
-
-// let number;
-// quizQueries.countQuestions(id).then((numberOfQuestions) => {
-//   number = numberOfQuestions;
-// });
-
-router.post("/", (req, res) => {
-  const questions = req.body;
-  const quizName = req.body.name;
-  console.log('name', quizName);
-  console.log('question', questions);
-  let userId = req.cookies.userId;
-
-  quizQueries
-    .addQuiz(quizName, userId)
-    .then(() => {
-      let quizId;
-      quizQueries.getQuizByName(quizName).then((obj)=> {
-        console.log('obj: ', obj);
-        quizId = obj.id;
-        console.log('name: ', quizName);
-        for (let i = 0; i < 5; i++) {
-          const question = questions[`question${i + 1}`];
-          const [questionName, correctAnswer, option1, option2, option3] = question;
-          console.log('Testing error', quizId);
-          quizQueries.addQuestions(questionName, correctAnswer, option1, option2, option3, quizId);
-        }
-      })
-        .then(() => {
-          res.redirect("/quizzes");
-        })
-        .catch((err) => {
-          res.status(500).json({ error: err.message });
-        });
-
-    });
-
 });
 
 // Get user owned quizzes
@@ -173,10 +120,68 @@ router.get("/quiz/:id/takequiz", (req, res) => {
     });
 });
 
+// POST ROUTES
 // actually take quiz button redirects to results
 router.post("/results", (req, res) => {
   const id = req.params;
   res.redirect(`quiz/${id}/takequiz`);
 });
+
+// submits new quiz information
+router.post("/", (req, res) => {
+  const questions = req.body;
+  const quizName = req.body.name;
+  console.log('name', quizName);
+  console.log('question', questions);
+  let userId = req.cookies.userId;
+
+  quizQueries
+    .addQuiz(quizName, userId)
+    .then(() => {
+      let quizId;
+      quizQueries.getQuizByName(quizName).then((obj)=> {
+        console.log('obj: ', obj);
+        quizId = obj.id;
+        console.log('name: ', quizName);
+        for (let i = 0; i < 5; i++) {
+          const question = questions[`question${i + 1}`];
+          const [questionName, correctAnswer, option1, option2, option3] = question;
+          console.log('Testing error', quizId);
+          quizQueries.addQuestions(questionName, correctAnswer, option1, option2, option3, quizId);
+        }
+      })
+        .then(() => {
+          res.redirect("/quizzes");
+        })
+        .catch((err) => {
+          res.status(500).json({ error: err.message });
+        });
+
+    });
+});
+
+// Remove user owned quiz from homepage
+router.post('/:id/update', (req, res) => {
+  const userId = req.cookies.userId;
+  let userName = req.cookies.userName;
+  quizQueries.getUserQuizzes(userId).then((userQuizzes) => {
+    const templateVars = {
+      userQuizzes,
+      userId,
+      userName,
+    };
+
+    const quizId = req.params;
+    quizQueries.privateQuiz(quizId.id) //quizId is an object
+      .then(() => {
+        res.render('myQuizzes', templateVars);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
+});
+
+
 
 module.exports = router;

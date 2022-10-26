@@ -17,7 +17,8 @@ CREATE TABLE quizzes (
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   likes smallint NOT NULL DEFAULT 0,
-  rating smallint NOT NULL DEFAULT 5
+  rating smallint NOT NULL DEFAULT 5,
+  listed BOOLEAN DEFAULT TRUE
 );
 
 CREATE TABLE questions (
