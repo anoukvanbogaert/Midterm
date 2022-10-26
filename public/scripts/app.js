@@ -48,10 +48,17 @@ $("document").ready(function() {
     }
   });
 
-  const $updateButton = $('')
+//   $tweetForm.submit(function(event) {
+  // event.preventDefault();
 
+  const $updateButton = $('#update-button');
 
+  $updateButton.submit(function(event) {
+    event.preventDefault();
 
-
+    $('.updateText').slideDown(2000, function () {
+      $('.updateText').slideUp(4000);
+    });
+  });
 });
 
