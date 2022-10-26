@@ -1,12 +1,10 @@
 /* eslint-disable no-undef */
 
-$("document").ready(function() {
+$("document").ready(function () {
   let total = 0;
   let attempts = 0;
   let numberOfQuestions = $("div[class='card-header']").length;
   let correctAwnser = "DOG";
-  console.log(req.params);
-
   $(".testbutton").click(function () {
     $(this).toggleClass("hightlight");
     $(this).siblings().removeClass("hightlight");
@@ -23,7 +21,7 @@ $("document").ready(function() {
   });
   $("#quizSubmit").submit(function (event) {
     $(".testbutton").prop("disabled", true);
-    const highlighted = $('body .highlight');
+    const highlighted = $("body .highlight");
     console.log(highlighted);
     event.preventDefault();
     attempts++;
