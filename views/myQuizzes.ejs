@@ -9,13 +9,24 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <!-- App JS -->
         <script type="text/javascript" src="/scripts/myQuizzPage.js"></script>
+           <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Document</title>
   </head>
   <body>
     <%- include('partials/_navbar') %>
 
+    <div class="updateMessage">
+      <p>
+        <i class="fa-sharp fa-solid fa-ghost"></i>
+        Successfully ghosted your quiz!
+        <i class="fa-sharp fa-solid fa-ghost"></i>
+      </p>
+    </div>
 
-      <div class="all-quizzes-container">
+
+    <div class="all-quizzes-container">
 
         <div class="all-quizzes-container">
           <h1>My Quizzes</h1>
@@ -38,7 +49,7 @@
 
       <p class="likes-circle"><%=quiz.rating%></p>
 
-      <form id="update-button" method="POST" action=<%=`/quizzes/${quiz.id}/update`%>><button type="submit" class ="btn" >Make Private</button></form>
+      <form id="update-button" method="POST" action=<%=`/quizzes/${quiz.id}/update`%>><button type="submit" class ="btn" >Ghost it!</button></form>
       </div>
 
 
