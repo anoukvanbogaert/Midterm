@@ -5,12 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="/styles/allquizzes.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- External JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <!-- App JS -->
+        <script type="text/javascript" src="/scripts/myQuizzPage.js"></script>
     <title>Document</title>
   </head>
   <body>
     <%- include('partials/_navbar') %>
 
-    <div class="all-quizzes-container">
+
+      <div class="all-quizzes-container">
+
+        <div class="all-quizzes-container">
+          <h1>My Quizzes</h1>
+          </div>
     <% for (let quiz of userQuizzes) { %>
 
       <div class="all-quizzes-grid single-quiz ">
