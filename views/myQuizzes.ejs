@@ -28,6 +28,8 @@
       <span class="likes-box">
 
       <p class="likes-circle"><%=quiz.rating%></p>
+
+      <form method="POST" action=<%=`/quizzes/${id}/delete`%>><button type="submit" class ="btn" >Make Private</button></form>
       </div>
 
 
