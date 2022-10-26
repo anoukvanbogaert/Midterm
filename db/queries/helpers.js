@@ -19,6 +19,7 @@ const getQuizzes = () => {
 const countQuestions = (id) => {
   return db.query('SELECT questions.* FROM questions WHERE quiz_id = $1', [id])
     .then((data) => {
+      console.log('data', data);
       return data.rows.length;
     });
 };
@@ -26,6 +27,15 @@ const countQuestions = (id) => {
 // Get 1 quiz from quiz_id
 const getQuizById = (id) => {
   return db.query("SELECT quizzes.*, users.name as username FROM quizzes JOIN users On users.id = user_id WHERE quizzes.id = $1", [id])
+    .then((data) => {
+      return data.rows[0];
+    });
+};
+
+// get quiz by name
+const getQuizByName = (quizName) => {
+  console.log('quizName', quizName);
+  return db.query("SELECT id FROM quizzes WHERE name = $1", [quizName])
     .then((data) => {
       return data.rows[0];
     });
@@ -51,6 +61,20 @@ const addQuiz = (name, user_id) => {
       return data.rows[0];
     });
 };
+
+// adding questions from create quiz form to DB
+const addQuestions = (questionName, correctAnswer, option1, option2, option3, quizId) => {
+  return db
+    .query('INSERT INTO questions (question, correct_answer, option_1, option_2, option_3, quiz_id) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;', [
+      questionName,
+      correctAnswer,
+      option1,
+      option2,
+      option3,
+      quizId
+    ]);
+};
+
 
 // Grab questions DB
 const getQuestionsForQuiz = (id) => {
@@ -83,5 +107,7 @@ module.exports = {
   addQuiz,
   getUserWithId,
   getQuizById,
-  countQuestions
+  countQuestions,
+  addQuestions,
+  getQuizByName,
 };
