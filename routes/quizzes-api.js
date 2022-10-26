@@ -161,8 +161,25 @@ router.post("/", (req, res) => {
 });
 
 // Remove user owned quiz from homepage
-router.post('/quizzes/:id/delete', (req, res) => {
+router.post('/:id/update', (req, res) => {
+  const userId = req.cookies.userId;
+  let userName = req.cookies.userName;
+  quizQueries.getUserQuizzes(userId).then((userQuizzes) => {
+    const templateVars = {
+      userQuizzes,
+      userId,
+      userName,
+    };
 
+    const quizId = req.params;
+    quizQueries.privateQuiz(quizId.id) //quizId is an object
+      .then(() => {
+        res.render('myQuizzes', templateVars);
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err.message });
+      });
+  });
 });
 
 

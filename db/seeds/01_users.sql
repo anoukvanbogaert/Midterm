@@ -7,11 +7,11 @@ VALUES
 
 
 -- QUIZZES
-INSERT INTO quizzes (name, user_id, likes, rating)
+INSERT INTO quizzes (name, user_id, likes, rating, listed)
 VALUES
-('Easy general knowledge', 1, 18, 4.5 ),
-('Geography Trivia', 2, 35, 4.2),
-('Music Trivia', 3, 12, 3.5);
+('Easy general knowledge', 1, 18, 4.5, TRUE),
+('Geography Trivia', 2, 35, 4.2, TRUE),
+('Music Trivia', 3, 12, 3.5, TRUE);
 
 
 -- QUESTIONS

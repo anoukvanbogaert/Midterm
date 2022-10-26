@@ -29,7 +29,7 @@
 
       <p class="likes-circle"><%=quiz.rating%></p>
 
-      <form method="POST" action=<%=`/quizzes/${id}/delete`%>><button type="submit" class ="btn" >Make Private</button></form>
+      <form id="update-button" method="POST" action=<%=`/quizzes/${quiz.id}/update`%>><button type="submit" class ="btn" >Make Private</button></form>
       </div>
 
 

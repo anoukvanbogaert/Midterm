@@ -10,9 +10,16 @@ const getUsers = () => {
 
 // Get ALL quizzes
 const getQuizzes = () => {
-  return db.query("SELECT * FROM quizzes;").then((data) => {
+  return db.query("SELECT * FROM quizzes WHERE listed = TRUE;").then((data) => {
     return data.rows;
   });
+};
+
+const privateQuiz = (id) => {
+  return db.query("UPDATE quizzes SET listed = FALSE WHERE id=$1", [id])
+    .then((data) => {
+      return data.rows[0];
+    });
 };
 
 // count number of questions
@@ -110,4 +117,5 @@ module.exports = {
   countQuestions,
   addQuestions,
   getQuizByName,
+  privateQuiz
 };
