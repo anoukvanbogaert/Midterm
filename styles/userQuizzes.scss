@@ -6,7 +6,7 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: center;
   margin: 0;
   height: 100vh;
 
@@ -24,7 +24,7 @@ body {
   margin-top: 0px;
   height: 85px;
   width: 100vw;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -76,6 +76,22 @@ ul li:not(:last-child)::after {
   width: 100px;
   height: 50px;
   margin-left: 50px;
+}
+
+.updateMessage {
+  width: 90%;
+  height: 500px;
+  margin-top: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgb(237, 224, 224);
+  font-family: "Spicy Rice", cursive;
+  font-weight: 100;
+  text-align: center;
+  overflow: auto;
+  max-height: 50vh;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .all-quizzes-container {
@@ -156,7 +172,7 @@ ul li:not(:last-child)::after {
   display: flex;
   justify-content: center;
   gap: 20px;
-  align-items: center;
+  align-items: flex-end;
   height: 5vh;
   background-color: rgb(205, 201, 201);
 }
@@ -165,9 +181,4 @@ ul li:not(:last-child)::after {
   background: none;
   border: none;
   cursor: pointer;
-}
-
-.liked {
-  color: blue;
-  background-color: blue;
 }
