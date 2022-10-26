@@ -1,8 +1,9 @@
 $("document").ready(function () {
   $(".button-thumb").click(function () {
-    const value = $(this).siblings(".likes-circle").html();
+    let element = $(this).siblings(".likes-circle");
+    const value = element.html();
     let newValue = +value + 1;
-
-    $(this).siblings(".likes-circle").html(newValue);
+    element.html(newValue);
+    element.animate({ background: "#fff" }, 1500);
   });
 });
