@@ -1,11 +1,10 @@
 /* eslint-disable no-undef */
 
-$("document").ready(function() {
+$("document").ready(function () {
   let total = 0;
   let attempts = 0;
   let numberOfQuestions = $("div[class='card-header']").length;
   let correctAwnser = "DOG";
-  console.log(req.params);
 
   $(".testbutton").click(function () {
     $(this).toggleClass("hightlight");
@@ -18,15 +17,15 @@ $("document").ready(function() {
         total++;
       } else {
         total--;
-
       }
     }
   });
   $("#quizSubmit").submit(function (event) {
-    $(".testbutton").prop("disabled", true);
-    const highlighted = $('body .highlight');
-    console.log(highlighted);
     event.preventDefault();
+    $(".testbutton").prop("disabled", true);
+    const highlighted = $("body .highlight");
+    console.log(highlighted);
+
     attempts++;
 
     if (total === numberOfQuestions) {
@@ -48,17 +47,16 @@ $("document").ready(function() {
     }
   });
 
-//   $tweetForm.submit(function(event) {
+  //   $tweetForm.submit(function(event) {
   // event.preventDefault();
 
-  const $updateButton = $('#update-button');
+  const $updateButton = $("#update-button");
 
-  $updateButton.submit(function(event) {
+  $updateButton.submit(function (event) {
     event.preventDefault();
 
-    $('.updateText').slideDown(2000, function () {
-      $('.updateText').slideUp(4000);
+    $(".updateText").slideDown(2000, function () {
+      $(".updateText").slideUp(4000);
     });
   });
 });
-
