@@ -67,29 +67,42 @@ router.get("/myQuizzes", (req, res) => {
   });
 });
 
+// let number;
+// quizQueries.countQuestions(id).then((numberOfQuestions) => {
+//   number = numberOfQuestions;
+// });
+
 router.post("/", (req, res) => {
-  console.log(req.body);
-
   const questions = req.body;
-  for (let i = 0; i < 5; i++) {
-    const question = questions[`question${i + 1}`];
-    const [questionName, correctAnswer, ...options] = question;
-    console.log(`questionName${i + 1}`, questionName);
-    console.log("correctAnswer", correctAnswer);
-    console.log(`options${i + 1}`, options);
-  }
-
-  let quizName = req.body.name;
+  const quizName = req.body.name;
+  console.log('name', quizName);
+  console.log('question', questions);
   let userId = req.cookies.userId;
+
   quizQueries
     .addQuiz(quizName, userId)
     .then(() => {
-      res.redirect("/quizzes");
-    })
+      let quizId;
+      quizQueries.getQuizByName(quizName).then((obj)=> {
+        console.log('obj: ', obj);
+        quizId = obj.id;
+        console.log('name: ', quizName);
+        for (let i = 0; i < 5; i++) {
+          const question = questions[`question${i + 1}`];
+          const [questionName, correctAnswer, option1, option2, option3] = question;
+          console.log('Testing error', quizId);
+          quizQueries.addQuestions(questionName, correctAnswer, option1, option2, option3, quizId);
+        }
+      })
+        .then(() => {
+          res.redirect("/quizzes");
+        })
+        .catch((err) => {
+          res.status(500).json({ error: err.message });
+        });
 
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
     });
+
 });
 
 // Get user owned quizzes
@@ -112,6 +125,7 @@ router.get("/quiz/:id", (req, res) => {
   let userName = req.cookies.userName;
   let userId = req.cookies.userId;
   let number;
+  console.log("hello");
   quizQueries.countQuestions(id).then((numberOfQuestions) => {
     number = numberOfQuestions;
   });
