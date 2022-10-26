@@ -22,6 +22,7 @@ body {
 
 .container {
   display: flex;
+
   gap: 20px;
 
   align-items: center;
@@ -31,7 +32,7 @@ body {
   display: flex;
   padding: 25px;
   background-color: #ebebeb;
-  opacity: 70%;
+  opacity: 80%;
   width: 1057px;
   margin-left: 50px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -125,23 +126,37 @@ ul li:not(:last-child)::after {
   height: 50px;
   margin-left: 50px;
 }
-
-.form-question1 {
-  display: flex;
+.main {
   justify-content: center;
-  align-items: end;
-  gap: 20px;
-  font-size: 14px;
 }
 
-.form-question1 input {
-  height: 25px;
-  width: 100px;
+.form-question1 {
+  height: 10vh;
+  font-size: 15px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  background-color: lightgray;
+  padding: 30px;
+}
+
+.form-question1 label {
+  font-size: 20px;
+}
+
+.bottom-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   text-align: center;
 }
 
-.form-question1 img {
-  padding: 10px;
-  height: 50px;
-  width: 50px;
+.question-input {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.question-input input {
+  width: 70%;
 }
