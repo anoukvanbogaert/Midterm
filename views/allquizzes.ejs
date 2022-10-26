@@ -12,6 +12,10 @@
       href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
       rel="stylesheet"
     />
+    <!-- External JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- App JS -->
+    <script type="text/javascript" src="/scripts/allQuizzesPage.js"></script>
   </head>
   <body>
 
@@ -39,7 +43,7 @@
           <p><%=quiz.created_at.toLocaleTimeString() %></p>
           <span class="likes-box">
             <button class="button-thumb">
-              <img src="/images/thumbsup.png" alt="" />
+              <img class="button-thumb-img" src="/images/thumbsup.png" alt="" />
             </button>
             <p class="likes-circle"><%=quiz.likes%></p>
           </span>
