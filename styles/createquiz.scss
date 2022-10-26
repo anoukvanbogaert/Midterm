@@ -32,7 +32,7 @@ body {
   display: flex;
   padding: 25px;
   background-color: #ebebeb;
-  opacity: 70%;
+  opacity: 80%;
   width: 1057px;
   margin-left: 50px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -131,17 +131,16 @@ ul li:not(:last-child)::after {
 }
 
 .form-question1 {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
   height: 10vh;
-  justify-content: center;
-  gap: 20px;
   font-size: 15px;
   margin-bottom: 20px;
   border: 1px solid black;
   background-color: lightgray;
-  padding: 20px;
+  padding: 30px;
+}
+
+.form-question1 label {
+  font-size: 20px;
 }
 
 .bottom-row {
@@ -152,9 +151,12 @@ ul li:not(:last-child)::after {
   text-align: center;
 }
 
-.mainQuestionInput {
+.question-input {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
-.form-question1 input {
-  height: 25px;
-  width: 150px;
+
+.question-input input {
+  width: 70%;
 }
