@@ -166,3 +166,8 @@ ul li:not(:last-child)::after {
   border: none;
   cursor: pointer;
 }
+
+.liked {
+  color: blue;
+  background-color: blue;
+}
