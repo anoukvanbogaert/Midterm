@@ -1,24 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="/styles/quiz.css" type="text/css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <%- include('partials/_navbar') %>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="/styles/quiz.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <%- include('partials/_navbar') %>
 
     <div class="all-quizzes-container">
       <div class="single-quiz">
         <div>
-          <h1 class="quizTitle"><%= quizName %></h1>
+          <h1 class="quizTitle">
+            <%= quizName %>
+          </h1>
           <div class="questions">
-            <p><%= number %> questions</p>
+            <p>
+              <%= number %> questions
+            </p>
           </div>
 
-          <p>By <%= userName %></p>
+          <p>By <%= userName %>
+          </p>
         </div>
 
         <form action="/quizzes/quiz/<%= quiz %>/takequiz">
@@ -27,5 +35,6 @@
       </div>
     </div>
     <%- include('partials/_footer') %>
-  </body>
+</body>
+
 </html>
