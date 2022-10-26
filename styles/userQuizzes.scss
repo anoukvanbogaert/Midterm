@@ -78,22 +78,6 @@ ul li:not(:last-child)::after {
   margin-left: 50px;
 }
 
-.updateMessage {
-  width: 90%;
-  height: 500px;
-  margin-top: 200px;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: rgb(237, 224, 224);
-  font-family: "Spicy Rice", cursive;
-  font-weight: 100;
-  text-align: center;
-  overflow: auto;
-  max-height: 50vh;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-    rgba(0, 0, 0, 0.22) 0px 15px 12px;
-}
-
 .all-quizzes-container {
   width: 90%;
   margin: auto;
