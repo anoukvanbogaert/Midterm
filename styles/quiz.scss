@@ -99,7 +99,7 @@ ul li:not(:last-child)::after {
   display: flex;
   flex-direction: column;
   padding: 10px;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 600;
   font-family: "Source Sans 3", sans-serif;
 }
@@ -115,10 +115,10 @@ ul li:not(:last-child)::after {
 }
 
 .questions {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  justify-content: center;
   font-size: 15px;
-  grid-gap: 25px;
+  gap: 20px;
 }
 
 button {
@@ -129,6 +129,9 @@ button {
   font-weight: bold;
   border: none;
   cursor: pointer;
+}
+.quizTitle {
+  font-size: 40px;
 }
 
 .bounce3 {
