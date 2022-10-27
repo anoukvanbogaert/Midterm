@@ -18,13 +18,22 @@
     rel="stylesheet" />
   <title>Create Page</title>
 </head>
-
+<div class="pyro">
+  <div class="before"></div>
+  <div class="after"></div>
+</div>
 <body>
   <%- include('partials/_navbar') %>
     <div class="header">
       <h1>Results</h1>
     </div>
-    <section class="results-container">
+    <h1>CONGRAGULATIONS</h1>
+    <div class="pyro">
+      <div class="before"></div>
+      <div class="after"></div>
+    </div>
+    <section class="results-container pyro">
+
       <div class="results-title"></div>
       </div>
       <div>
@@ -34,6 +43,11 @@
       </div>
       <div class="results">
         <%= score %> / <%= number %>
+      </div>
+
+      <div class="share">
+        <h2>Share your result</h2>
+        <input value="link here" type="text" name="share" id="">
       </div>
     </section>
     <%- include('partials/_footer') %>
