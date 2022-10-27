@@ -72,7 +72,6 @@ router.get("/quiz/:id", (req, res) => {
   let userName = req.cookies.userName;
   let userId = req.cookies.userId;
   let number;
-  console.log("hello");
   quizQueries.countQuestions(id).then((numberOfQuestions) => {
     number = numberOfQuestions;
   });
@@ -86,7 +85,6 @@ router.get("/quiz/:id", (req, res) => {
         quizName: quizName.name,
         userName: quizName.username,
       };
-      console.log(templateVars);
       res.render("takeQuiz", templateVars);
     })
     .catch((err) => {
@@ -99,20 +97,21 @@ router.get("/quiz/:id/takequiz", (req, res) => {
   const {id} = req.params;
   const userId = req.cookies.userId;
   let userName = req.cookies.userName;
+  let quizName = '';
+  quizQueries.getQuizById(id).then((title) => {
+    quizName = title.name;
+  });
+
   quizQueries
     .getQuestionsForQuiz(id) // object of quiz name and questions
     .then((questionsObject) => {
       const templateVars = {
+        quizName,
         userName,
         userId, // index 0 in object templateVars
         questionsObject, // index 1 in object templateVars and an array of objects per question
       };
-      console.log(
-        "questionsobject",
-        questionsObject,
-        "templatevars",
-        templateVars
-      );
+      console.log('rapunzel', templateVars.quizName);
       res.render("actuallyTakingQuiz", templateVars);
     })
     .catch((err) => {
