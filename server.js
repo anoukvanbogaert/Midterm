@@ -66,41 +66,38 @@ app.get('/results/:id', (req, res) => {
   let score = 0;
   let numberOfQuestions = 0;
 
-  quizQueries.getScore(resultId) // score and quiz id 
-    .then((result) => {
-      score = result[0].score;
-      quizQueries.countQuestions(result[0].quiz_id)
-        .then((num) => {
-          numberOfQuestions = num;
-        });
-    });
-
-
-  // then use quizId for countQuestions functio
-
-
-
   let templateVars = {
     userId,
     userName,
   };
-  res.render("resultsPage", templateVars);
+
+  quizQueries.getScore(resultId) // score and quiz id 
+    .then((result) => {
+      score = result[0].score;
+      templateVars.score = score;
+      quizQueries.countQuestions(result[0].quiz_id)
+        .then((num) => {
+          numberOfQuestions = num.toString();
+          templateVars.number = num.toString();
+          res.render("resultsPage", templateVars);
+        });
+    });
+
+
+
 });
 
 app.post("/results", (req, res) => {
   let userId = req.cookies.userId;
   let score = 0;
-  let final = 0;
   const quizId = req.headers.referer[35];
 
   quizQueries.correctAnswer(quizId)
     .then((data) => {
       let answerArray = [];
-
-      for (let i = 0; i < data[0].length; i++) {
-        answerArray.push(data[0][i].correct_answer);
+      for (let i = 0; i < data.length; i++) {
+        answerArray.push(data[i].correct_answer);
       }
-      final = answerArray.length;
       for (let i = 0; i < answerArray.length; i++) {
         if (answerArray[i] === req.body.answers[i]) {
           score++;

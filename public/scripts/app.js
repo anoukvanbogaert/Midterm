@@ -10,7 +10,6 @@ $(document).ready(function() {
 
   // selecting the option
   $(".testbutton").click(function() {
-    console.log($(this).val());
     $(this).toggleClass("hightlight");
     $(this).siblings().removeClass("hightlight");
   });
@@ -24,8 +23,8 @@ $(document).ready(function() {
     let answersObject = [];
     for (let i = 0; i < highlighted.length; i++) {
       answersObject.push(highlighted[i].value);
+      console.log(highlighted[i].value);
     }
-    console.log(answersObject);
 
     $.post("/results", {answers: answersObject}).then((data) => {
       window.location.href = `http://localhost:8080/results/${data}`;

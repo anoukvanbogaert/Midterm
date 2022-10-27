@@ -22,15 +22,19 @@
 <body>
   <%- include('partials/_navbar') %>
     <div class="header">
+      <h1>Results</h1>
     </div>
     <section class="results-container">
       <div class="results-title"></div>
-      <h1>Results</h1>
       </div>
       <div>
-        <h1>Score</h1>
+        <h1>
+          <%= userName %> scored:
+        </h1>
       </div>
-      <div></div>
+      <div class="results">
+        <%= score %> / <%= number %>
+      </div>
     </section>
     <%- include('partials/_footer') %>
 </body>
