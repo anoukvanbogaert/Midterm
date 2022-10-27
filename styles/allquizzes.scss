@@ -115,20 +115,18 @@ body {
 }
 
 button {
-  padding: 15px;
   background-color: lightblue;
   border-radius: 5px;
   font-size: 20px;
   font-weight: bold;
-  border: none;
-  cursor: pointer;
 }
+
+/*like button hover*/
 
 .button-thumb {
   background: transparent;
   border: none;
   cursor: pointer;
-  pad: 5px;
 
   &:hover {
     background-color: lightblue;
@@ -139,6 +137,8 @@ button {
 $color: #0cf;
 
 .button {
+  border: none;
+  cursor: pointer;
   display: inline-block;
   padding: 0.75rem 1.25rem;
   border-radius: 10rem;
