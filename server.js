@@ -62,19 +62,17 @@ app.get('/results/:id', (req, res) => {
   let userId = req.cookies.userId;
   let userName = req.cookies.userName;
   const resultId = req.params.id;
-  console.log(resultId);
   let templateVars = {
     userId,
     userName,
   };
-  res.render("resultsPage", templateVars);
+  res.render("index", templateVars);
 });
 
 app.post("/results", (req, res) => {
   let userId = req.cookies.userId;
   let score = 0;
   let final = 0;
-  let finalScore = `${score}/${final}`;
   const quizId = req.headers.referer[35];
   const correctArray = Promise.all([quizQueries.correctAnswer(quizId)]).then(
     (data) => {
@@ -86,29 +84,17 @@ app.post("/results", (req, res) => {
       final = answerArray.length;
       for (let i = 0; i < answerArray.length; i++) {
         if (answerArray[i] === req.body.answers[i]) {
-          console.log(
-            answerArray[i],
-            "DOES ===",
-            req.body.answers[i],
-            "correct!"
-          );
           score++;
-        } else {
-          console.log(
-            answerArray[i],
-            "DOES NOT !=",
-            req.body.answers[i],
-            "Wrong!"
-          );
         }
       }
       quizQueries
         .addScore(userId, quizId, score)
         .then(() => {
           const resultId = quizQueries.getResultsId(userId, quizId, score);
-        })
-        .then(() => {
-          res.redirect(`/results/${resultId}`);
+          return resultId
+            .then((resultId) => {
+              res.redirect(`/results/${resultId.id}`);
+            });
         });
     }
   );
