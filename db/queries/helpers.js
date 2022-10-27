@@ -26,7 +26,6 @@ const privateQuiz = (id) => {
 const countQuestions = (id) => {
   return db.query('SELECT questions.* FROM questions WHERE quiz_id = $1', [id])
     .then((data) => {
-      console.log('data', data);
       return data.rows.length;
     });
 };
