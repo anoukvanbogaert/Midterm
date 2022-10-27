@@ -81,9 +81,10 @@ router.get("/quiz/:id", (req, res) => {
       const templateVars = {
         number,
         userId,
+        userName,
         quiz: id,
         quizName: quizName.name,
-        userName: quizName.username,
+        quizMaker: quizName.username
       };
       res.render("takeQuiz", templateVars);
     })

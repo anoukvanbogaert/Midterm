@@ -61,21 +61,25 @@ app.get("/", (req, res) => {
 
 app.get('/results/:id', (req, res) => {
   let userId = req.cookies.userId;
+  let userName = req.cookies.userName;
   // let userName = req.cookies.userName;
   const resultId = req.params.id;
   let score = 0;
+  let testersName = '';
   let numberOfQuestions = 0;
 
   let templateVars = {
     userId,
+    userName,
   };
 
   quizQueries.getScore(resultId) // score and quiz id 
     .then((result) => {
+      console.log('TEST', result);
       score = result[0].score;
-      userName = result[0].name;
+      testersName = result[0].name;
       templateVars.score = score;
-      templateVars.name = userName;
+      templateVars.name = testersName;
       quizQueries.countQuestions(result[0].quiz_id)
         .then((num) => {
           numberOfQuestions = num.toString();
