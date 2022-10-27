@@ -53,11 +53,7 @@ body {
 }
 
 .quizTitle {
-  font-size: 40px;
-}
-
-.infoContainer {
-
+  font-size: 50px;
 }
 
 .questions {
@@ -69,13 +65,14 @@ body {
 
 button {
   padding: 20px;
-  background-color: lightblue;
+  background-color: black;
+  color: white;
   border-radius: 5px;
   font-size: 20px;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 
 .bounce3 {
