@@ -44,7 +44,7 @@ allow users to be able to create/share/post quizzes in one place. Take a quiz , 
    ![Screenshot](/_readMeUtils/screenshots/createQuiz.png)
 
 4. Once on the quiz. You can see the amount of questions and the title of the quiz and user name. You take an attempt at the quiz. Click "TAKE QUIZ!"
-   ![Screenshot](/_readMeUtils/screenshots/createQuiz.png)
+   ![Screenshot](/_readMeUtils/screenshots/lookAtQuiz.png)
 
 5. Clicking the button will take you to the quiz. Where you can fill out your awnsers. After clicking submit. You will see results displayed with your final score.
 
