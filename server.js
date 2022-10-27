@@ -19,7 +19,7 @@ const quizQueries = require("./db/queries/helpers");
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(cookieParser());
 app.use(morgan("dev"));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(
   "/styles",
   sassMiddleware({
@@ -59,26 +59,40 @@ app.get("/", (req, res) => {
 });
 
 app.post("/results", (req, res) => {
-  console.log(req.body);
   let score = 0;
+  let final = 0;
+  let finalScore = `${score}/${final}`;
   const quizId = req.headers.referer[35];
-  const correctArray = Promise.all([quizQueries.correctAnswer(quizId)])
-    .then((data) => {
+  const correctArray = Promise.all([quizQueries.correctAnswer(quizId)]).then(
+    (data) => {
       let answerArray = [];
+
       for (let i = 0; i < data[0].length; i++) {
         answerArray.push(data[0][i].correct_answer);
       }
-
+      final = answerArray.length;
       for (let i = 0; i < answerArray.length; i++) {
-        if (correctArray.contains(answerArray[i])) {
+        if (answerArray[i] === req.body.answers[i]) {
+          console.log(
+            answerArray[i],
+            "DOES ===",
+            req.body.answers[i],
+            "correct!"
+          );
           score++;
-          console.log('test1', score);
+        } else {
+          console.log(
+            answerArray[i],
+            "DOES NOT !=",
+            req.body.answers[i],
+            "Wrong!"
+          );
         }
       }
-      console.log(score);
-    });
+      console.log(score, "correct awnsers");
+    }
+  );
 });
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
