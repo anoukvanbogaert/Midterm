@@ -9,7 +9,6 @@ body {
   justify-content: space-between;
   margin: 0;
   height: 100vh;
-
   background-color: rgba(248, 238, 238, 0.97);
   background-image: url("../images/paperbackGround.jpg");
   background-repeat: no-repeat;
@@ -20,7 +19,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 700px;
+  width: 1700px;
   height: 900px;
   margin: auto;
   padding: 30px;
@@ -40,6 +39,7 @@ body {
   font-size: 25px;
   font-weight: 600;
   font-family: "Source Sans 3", sans-serif;
+  height: 450px;
 }
 
 .footer {
@@ -50,6 +50,14 @@ body {
   align-items: center;
   height: 5vh;
   background-color: rgb(205, 201, 201);
+}
+
+.quizTitle {
+  font-size: 40px;
+}
+
+.infoContainer {
+
 }
 
 .questions {
@@ -67,10 +75,7 @@ button {
   font-weight: bold;
   border: none;
   cursor: pointer;
-}
-
-.quizTitle {
-  font-size: 40px;
+  margin-top: 50px;
 }
 
 .bounce3 {
