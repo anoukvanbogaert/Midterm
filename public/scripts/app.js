@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-$(document).ready(function () {
+$(document).ready(function() {
   $("#updateMessage").hide();
 
   let total = 0;
@@ -9,7 +9,7 @@ $(document).ready(function () {
   let correctAnswer = "correct_answer";
 
   // selecting the option
-  $(".testbutton").click(function () {
+  $(".testbutton").click(function() {
     console.log($(this).val());
     $(this).toggleClass("hightlight");
     $(this).siblings().removeClass("hightlight");
@@ -17,7 +17,7 @@ $(document).ready(function () {
 
   //checking if selected option is correct
 
-  $("#quizSubmit").submit(function (event) {
+  $("#quizSubmit").submit(function(event) {
     event.preventDefault();
     $(".testbutton").prop("disabled", true);
     const highlighted = $(".testbutton.hightlight");
@@ -27,8 +27,8 @@ $(document).ready(function () {
     }
     console.log(answersObject);
 
-    $.post("/results", { answers: answersObject }).then((data) => {
-      console.log(data);
+    $.post("/results", {answers: answersObject}).then((data) => {
+      window.location.href = `http://localhost:8080/results/${data}`;
     });
   });
 
@@ -37,10 +37,10 @@ $(document).ready(function () {
 
   const $updateButton = $("#update-button");
 
-  $updateButton.submit(function (event) {
+  $updateButton.submit(function(event) {
     event.preventDefault();
 
-    $("#updateMessage").slideDown(2000, function () {
+    $("#updateMessage").slideDown(2000, function() {
       $("#updateMessage").slideUp(4000);
     });
     return;

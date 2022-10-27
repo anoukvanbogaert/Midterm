@@ -87,14 +87,23 @@ const addScore = (userId, quizId, score) => {
     .query('INSERT INTO results (quiz_id, user_id, score) VALUES ($1, $2, $3) RETURNING  *;', [quizId, userId, score]);
 };
 
+const getScore = (resultId) => {
+  return db
+    .query('SELECT score, quiz_id FROM results WHERE id = $1', [resultId])
+    .then((data) => {
+      console.log(data.rows);
+      return data.rows;
+    });
+};
+
 const getResultsId = (userId, quizId, score) => {
   return db
     .query('SELECT id FROM results WHERE quiz_id = $1 AND user_id = $2 AND score = $3;', [quizId, userId, score])
     .then((data) => {
-      console.log('data rows result id test', data.rows[0]);
       return data.rows[0];
     });
 };
+
 
 
 
@@ -144,4 +153,5 @@ module.exports = {
   correctAnswer,
   addScore,
   getResultsId,
+  getScore
 };

@@ -35,6 +35,7 @@ app.use(express.static("public"));
 const userApiRoutes = require("./routes/users-api");
 const quizzesApiRoutes = require("./routes/quizzes-api");
 const questionsApiRoutes = require("./routes/questionsForQuiz-api");
+const {all} = require("./routes/quizzes-api");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -62,11 +63,28 @@ app.get('/results/:id', (req, res) => {
   let userId = req.cookies.userId;
   let userName = req.cookies.userName;
   const resultId = req.params.id;
+  let score = 0;
+  let numberOfQuestions = 0;
+
+  quizQueries.getScore(resultId) // score and quiz id 
+    .then((result) => {
+      score = result[0].score;
+      quizQueries.countQuestions(result[0].quiz_id)
+        .then((num) => {
+          numberOfQuestions = num;
+        });
+    });
+
+
+  // then use quizId for countQuestions functio
+
+
+
   let templateVars = {
     userId,
     userName,
   };
-  res.render("index", templateVars);
+  res.render("resultsPage", templateVars);
 });
 
 app.post("/results", (req, res) => {
@@ -74,8 +92,9 @@ app.post("/results", (req, res) => {
   let score = 0;
   let final = 0;
   const quizId = req.headers.referer[35];
-  const correctArray = Promise.all([quizQueries.correctAnswer(quizId)]).then(
-    (data) => {
+
+  quizQueries.correctAnswer(quizId)
+    .then((data) => {
       let answerArray = [];
 
       for (let i = 0; i < data[0].length; i++) {
@@ -93,11 +112,11 @@ app.post("/results", (req, res) => {
           const resultId = quizQueries.getResultsId(userId, quizId, score);
           return resultId
             .then((resultId) => {
-              res.redirect(`/results/${resultId.id}`);
+              res.json(resultId.id);
             });
         });
     }
-  );
+    );
 });
 
 app.listen(PORT, () => {
