@@ -40,9 +40,11 @@
       <% for (let quiz of quizzes) { %>
 
         <div class="all-quizzes-grid single-quiz">
-          <p>
+          <form action="/quizzes/quiz/<%= quiz.id %>">
+          <button class="button">
             <%= quiz.name %>
-          </p>
+          </button>
+        </form>
           <p>
             <%= quiz.user_id %>
           </p>
