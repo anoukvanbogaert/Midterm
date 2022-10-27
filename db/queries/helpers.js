@@ -88,7 +88,7 @@ const addScore = (userId, quizId, score) => {
 
 const getScore = (resultId) => {
   return db
-    .query('SELECT score, quiz_id FROM results WHERE id = $1', [resultId])
+    .query('SELECT score, quiz_id, users.name as name FROM results JOIN users on users.id = user_id WHERE results.id = $1', [resultId])
     .then((data) => {
       console.log(data.rows);
       return data.rows;
