@@ -82,6 +82,21 @@ const addQuestions = (questionName, correctAnswer, option1, option2, option3, qu
     ]);
 };
 
+const addScore = (userId, quizId, score) => {
+  return db
+    .query('INSERT INTO results (quiz_id, user_id, score) VALUES ($1, $2, $3) RETURNING  *;', [quizId, userId, score]);
+};
+
+const getResultsId = (userId, quizId, score) => {
+  return db
+    .query('SELECT id FROM result WHERE quiz_id = $1 AND user_id = $2 AND score = $3;', [quizId, userId, score])
+    .then((data) => {
+      console.log('data rows result id test', data.rows[0]);
+      return data.rows[0];
+    });
+};
+
+
 
 // Grab questions DB
 const getQuestionsForQuiz = (id) => {
@@ -126,5 +141,7 @@ module.exports = {
   addQuestions,
   getQuizByName,
   privateQuiz,
-  correctAnswer
+  correctAnswer,
+  addScore,
+  getResultsId,
 };

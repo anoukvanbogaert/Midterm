@@ -19,7 +19,7 @@ const quizQueries = require("./db/queries/helpers");
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(cookieParser());
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(
   "/styles",
   sassMiddleware({
@@ -58,7 +58,20 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
+app.get('/results/:id', (req, res) => {
+  let userId = req.cookies.userId;
+  let userName = req.cookies.userName;
+  const resultId = req.params.id;
+  console.log(resultId);
+  let templateVars = {
+    userId,
+    userName,
+  };
+  res.render("resultsPage", templateVars);
+});
+
 app.post("/results", (req, res) => {
+  let userId = req.cookies.userId;
   let score = 0;
   let final = 0;
   let finalScore = `${score}/${final}`;
@@ -89,7 +102,14 @@ app.post("/results", (req, res) => {
           );
         }
       }
-      console.log(score, "correct awnsers");
+      quizQueries
+        .addScore(userId, quizId, score)
+        .then(() => {
+          const resultId = quizQueries.getResultsId(userId, quizId, score);
+        })
+        .then(() => {
+          res.redirect(`/results/${resultId}`);
+        });
     }
   );
 });
