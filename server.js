@@ -12,12 +12,14 @@ const app = express();
 
 app.set("view engine", "ejs");
 
+const quizQueries = require("./db/queries/helpers");
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(cookieParser());
 app.use(morgan("dev"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({extended: true}));
 app.use(
   "/styles",
   sassMiddleware({
@@ -56,15 +58,27 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
-// app.get("/", (req, res) => {
-//   let userId = req.cookies.userId;
-//   let userName = req.cookies.userName;
-//   let templateVars = {
-//     userId,
-//     userName,
-//   };
-//   res.render("actuallyTakingQuiz", templateVars);
-// });
+app.post("/results", (req, res) => {
+  console.log(req.body);
+  let score = 0;
+  const quizId = req.headers.referer[35];
+  const correctArray = Promise.all([quizQueries.correctAnswer(quizId)])
+    .then((data) => {
+      let answerArray = [];
+      for (let i = 0; i < data[0].length; i++) {
+        answerArray.push(data[0][i].correct_answer);
+      }
+
+      for (let i = 0; i < answerArray.length; i++) {
+        if (correctArray.contains(answerArray[i])) {
+          score++;
+          console.log('test1', score);
+        }
+      }
+      console.log(score);
+    });
+});
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

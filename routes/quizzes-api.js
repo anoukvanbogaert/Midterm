@@ -55,20 +55,20 @@ router.get("/myQuizzes", (req, res) => {
 // Get user owned quizzes
 // Need params ID for quiz
 router.get("/myquizzes/:id", (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params;
   quizQueries
     .getUserQuizzes(id)
     .then((quizzes) => {
-      res.json({ quizzes });
+      res.json({quizzes});
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message });
+      res.status(500).json({error: err.message});
     });
 });
 
 // Show the selected quiz
 router.get("/quiz/:id", (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params;
   let userName = req.cookies.userName;
   let userId = req.cookies.userId;
   let number;
@@ -90,13 +90,13 @@ router.get("/quiz/:id", (req, res) => {
       res.render("takeQuiz", templateVars);
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message });
+      res.status(500).json({error: err.message});
     });
 });
 
-// Do a quiz
+// Do a quiz // [0, 1, 2, 3]
 router.get("/quiz/:id/takequiz", (req, res) => {
-  const { id } = req.params;
+  const {id} = req.params;
   const userId = req.cookies.userId;
   let userName = req.cookies.userName;
   quizQueries
@@ -116,7 +116,7 @@ router.get("/quiz/:id/takequiz", (req, res) => {
       res.render("actuallyTakingQuiz", templateVars);
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message });
+      res.status(500).json({error: err.message});
     });
 });
 
@@ -139,7 +139,7 @@ router.post("/", (req, res) => {
     .addQuiz(quizName, userId)
     .then(() => {
       let quizId;
-      quizQueries.getQuizByName(quizName).then((obj)=> {
+      quizQueries.getQuizByName(quizName).then((obj) => {
         console.log('obj: ', obj);
         quizId = obj.id;
         console.log('name: ', quizName);
@@ -154,7 +154,7 @@ router.post("/", (req, res) => {
           res.redirect("/quizzes");
         })
         .catch((err) => {
-          res.status(500).json({ error: err.message });
+          res.status(500).json({error: err.message});
         });
 
     });
@@ -177,7 +177,7 @@ router.post('/:id/update', (req, res) => {
         res.render('myQuizzes', templateVars);
       })
       .catch((err) => {
-        res.status(500).json({ error: err.message });
+        res.status(500).json({error: err.message});
       });
   });
 });
