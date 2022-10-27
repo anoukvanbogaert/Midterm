@@ -17,38 +17,43 @@
 <body>
   <%- include('partials/_navbar') %>
     <div class="all-quizzes-container">
-      <% for (let obj of questionsObject) { %>
-        <div class="submission-question card">
-          <div class="card-header">
-            <h3>QUESTION <%= obj.id %>
-            </h3>
-          </div>
-          <div class="card-body">
-            <p></p>
-            <p>
-              <%= obj.question %>
-            </p>
-            <p></p>
-          </div>
-          <div class="button-grid"></div>
-          <button class="testbutton" value="correct_answer">
-            <%= obj.correct_answer %>
-          </button>
-          <button class="testbutton" value="option_1">
-            <%= obj.option_1 %>
-          </button>
-          <button class="testbutton" value="option_2">
-            <%= obj.option_2 %>
-          </button>
-          <button class="testbutton" value="option_3">
-            <%= obj.option_3 %>
-          </button>
-        </div>
-        <% } %>
-          <form id="quizSubmit">
-            <button id="submit">SUBMIT QUIZ</button>
-          </form>
-          <div id="score"></div>
+      <% let questionNumber=0 %>
+        <% for (let obj of questionsObject) { %>
+          <% questionNumber++ %>
+            <div class="submission-question card">
+              <div class="card-header">
+                <h3>QUESTION <%= questionNumber %>
+                </h3>
+              </div>
+              <div class="card-body">
+                <p></p>
+                <p>
+                  <%= obj.question %>
+                </p>
+                <p></p>
+              </div>
+              <div class="button-grid"></div>
+              <% const optionsArray=[obj.correct_answer, obj.option_1, obj.option_2, obj.option_3].sort((a, b)=> 0.5 -
+                Math.random()); %>
+
+                <button class="testbutton" value="<%= optionsArray[0] %>">
+                  <%= optionsArray[0] %>
+                </button>
+                <button class="testbutton" value="<%= optionsArray[1] %>">
+                  <%= optionsArray[1] %>
+                </button>
+                <button class="testbutton" value="<%= optionsArray[2] %>">
+                  <%= optionsArray[2] %>
+                </button>
+                <button class="testbutton" value="<%= optionsArray[3] %>">
+                  <%= optionsArray[3] %>
+                </button>
+            </div>
+            <% } %>
+              <form id="quizSubmit">
+                <button id="submit">SUBMIT QUIZ</button>
+              </form>
+              <div id="score"></div>
     </div>
 
 

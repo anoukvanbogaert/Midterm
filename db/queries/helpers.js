@@ -1,4 +1,4 @@
-const { Pool } = require("pg/lib");
+const {Pool} = require("pg/lib");
 const db = require("../connection");
 
 // Grab user DB
@@ -100,8 +100,16 @@ const getUserWithId = (id) => {
   return db
     .query("SELECT id,name FROM users WHERE users.id = $1", [id])
     .then((data) => {
-      console.log(data.rows[0]);
       return data.rows[0];
+    });
+};
+
+//Grab correct_answers array
+const correctAnswer = (id) => {
+  return db
+    .query("SELECT correct_answer FROM questions WHERE quiz_id = $1", [id])
+    .then((data) => {
+      return data.rows;
     });
 };
 
@@ -117,5 +125,6 @@ module.exports = {
   countQuestions,
   addQuestions,
   getQuizByName,
-  privateQuiz
+  privateQuiz,
+  correctAnswer
 };
