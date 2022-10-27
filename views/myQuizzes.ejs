@@ -46,7 +46,7 @@
 
         <div class="all-quizzes-grid single-quiz ">
           <form action="/quizzes/quiz/<%= quiz.id %>">
-            <button>
+            <button class="button">
               <%= quiz.name %>
             </button>
           </form>
@@ -58,7 +58,7 @@
             <%=quiz.created_at.toLocaleTimeString() %>
           </p>
           <span class="likes-box">
-            <button class="button-thumb"><img src="/images/thumbsup.png" alt=""></button>
+            <button class="button-thumb button"><img src="/images/thumbsup.png" alt=""></button>
             <p class="likes-circle">
               <%=quiz.likes%>
             </p>
@@ -70,7 +70,7 @@
             </p>
 
             <form id="update-button" method="POST" action=<%=`/quizzes/${quiz.id}/update`%>><button type="submit"
-                class="btn">Ghost it!</button></form>
+                class="btn button">Ghost it!</button></form>
         </div>
 
 
