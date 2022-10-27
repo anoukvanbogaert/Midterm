@@ -20,37 +20,39 @@
       <p class="title">
         <%= quizName %> Quiz
       </p>
-      <% for (let obj of questionsObject) { %>
-        <div class="submission-question card">
-          <div class="card-header">
-            <p class="question-number">QUESTION <%= obj.id %>
-            </p>
-          </div>
-          <div class="card-body">
-            <p class="question">
-              <%= obj.question %>
-            </p>
-            <p></p>
-            <div class="button-grid"></div>
-            <button class="testbutton" value="correct_answer">
-              <%= obj.correct_answer %>
-            </button>
-            <button class="testbutton" value="option_1">
-              <%= obj.option_1 %>
-            </button>
-            <button class="testbutton" value="option_2">
-              <%= obj.option_2 %>
-            </button>
-            <button class="testbutton" value="option_3">
-              <%= obj.option_3 %>
-            </button>
-          </div>
-        </div>
-        <% } %>
-          <form id="quizSubmit">
-            <button id="submit">SUBMIT QUIZ</button>
-          </form>
-          <div id="score"></div>
+      <% let number=0 %>
+        <% for (let obj of questionsObject) { %>
+          <% number++ %>
+            <div class="submission-question card">
+              <div class="card-header">
+                <p class="question-number">QUESTION <%= number %>
+                </p>
+              </div>
+              <div class="card-body">
+                <p class="question">
+                  <%= obj.question %>
+                </p>
+                <p></p>
+                <div class="button-grid"></div>
+                <button class="testbutton" value="correct_answer">
+                  <%= obj.correct_answer %>
+                </button>
+                <button class="testbutton" value="option_1">
+                  <%= obj.option_1 %>
+                </button>
+                <button class="testbutton" value="option_2">
+                  <%= obj.option_2 %>
+                </button>
+                <button class="testbutton" value="option_3">
+                  <%= obj.option_3 %>
+                </button>
+              </div>
+            </div>
+            <% } %>
+              <form id="quizSubmit">
+                <button id="submit">SUBMIT QUIZ</button>
+              </form>
+              <div id="score"></div>
     </div>
 
 
