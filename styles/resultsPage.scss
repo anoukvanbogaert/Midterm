@@ -17,14 +17,32 @@ body {
   background-size: cover;
 }
 
+// .results-body {
+//   direction: flex;
+//   justify-content: flex-start;
+// }
+
+.header {
+  margin-top: 200px;
+  font-family: "Spicy Rice", cursive;
+  font-weight: 100;
+  font-size: 2em;
+}
+
+.results {
+  font-family: "Spicy Rice", cursive;
+  font-weight: 50;
+  font-size: 10em;
+}
+
 .results-container {
   background-color: lightblue;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  width: 50vw;
-  height: 60vh;
+  width: 70vw;
+  height: 35vh;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
