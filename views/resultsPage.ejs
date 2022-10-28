@@ -18,16 +18,13 @@
     rel="stylesheet" />
   <title>Create Page</title>
 </head>
-<div class="pyro">
-  <div class="before"></div>
-  <div class="after"></div>
-</div>
+
 <body>
   <%- include('partials/_navbar') %>
     <div class="header">
       <h1>Results</h1>
     </div>
-    <h1>CONGRAGULATIONS</h1>
+
     <div class="pyro">
       <div class="before"></div>
       <div class="after"></div>
@@ -47,7 +44,7 @@
 
       <div class="share">
         <h2>Share your result</h2>
-        <input value="link here" type="text" name="share" id="">
+      <a href="/results/<%= resultsId %>">/results/<%= resultsId %></a>
       </div>
     </section>
     <%- include('partials/_footer') %>
