@@ -6,7 +6,7 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin: 0;
   height: 100vh;
@@ -23,7 +23,7 @@ body {
 }
 
 .all-quizzes-container {
-  width: 90%;
+  width: 80%;
   margin: auto;
   padding: 10px;
   border-radius: 5px;
@@ -147,6 +147,7 @@ $color: #0cf;
   position: relative;
   overflow: hidden;
   z-index: 1;
+
   &:after {
     content: "";
     position: absolute;
@@ -158,6 +159,7 @@ $color: #0cf;
     border-radius: 10rem;
     z-index: -2;
   }
+
   &:before {
     content: "";
     position: absolute;
@@ -170,8 +172,10 @@ $color: #0cf;
     border-radius: 10rem;
     z-index: -1;
   }
+
   &:hover {
     color: #fff;
+
     &:before {
       width: 100%;
     }
