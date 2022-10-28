@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/createquiz.css" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <title>Create Page</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles/createquiz.css" type="text/css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-  <title>Create Page</title>
-</head>
-
-<body>
-  <%- include('partials/_navbar') %>
+  <body>
+    <%- include('partials/_navbar') %>
 
     <section class="header">
       <h1 class="header-text">Create a Quiz</h1>
@@ -29,7 +29,7 @@
     <section class="quiz-container">
       <div class="main">
         <form class="quiz-form" method="POST" action="/quizzes">
-          <div class="container">
+          <div class="question-input">
             <h2>Quizz Name:</h2>
             <input type="text" name="name" id="name" />
           </div>
@@ -126,10 +126,9 @@
             </div>
           </div>
 
-          <button>CREATE</button>
+          <button class="button">CREATE</button>
         </form>
       </div>
     </section>
-</body>
-
+  </body>
 </html>
