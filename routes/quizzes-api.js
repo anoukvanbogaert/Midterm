@@ -130,6 +130,7 @@ router.post("/results", (req, res) => {
 // submits new quiz information
 router.post("/", (req, res) => {
   const questions = req.body;
+  console.log(questions);
   const quizName = req.body.name;
   console.log('name', quizName);
   console.log('question', questions);
