@@ -19,7 +19,7 @@ const quizQueries = require("./db/queries/helpers");
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(cookieParser());
 app.use(morgan("dev"));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(
   "/styles",
   sassMiddleware({
@@ -35,7 +35,7 @@ app.use(express.static("public"));
 const userApiRoutes = require("./routes/users-api");
 const quizzesApiRoutes = require("./routes/quizzes-api");
 const questionsApiRoutes = require("./routes/questionsForQuiz-api");
-const {all} = require("./routes/quizzes-api");
+const { all } = require("./routes/quizzes-api");
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -59,37 +59,36 @@ app.get("/", (req, res) => {
   res.render("index", templateVars);
 });
 
-app.get('/results/:id', (req, res) => {
+app.get("/results/:id", (req, res) => {
   let userId = req.cookies.userId;
   let userName = req.cookies.userName;
+  let resultsId = req.params.id;
   // let userName = req.cookies.userName;
   const resultId = req.params.id;
   let score = 0;
-  let testersName = '';
+  let testersName = "";
   let numberOfQuestions = 0;
 
   let templateVars = {
+    resultsId,
     userId,
     userName,
   };
 
-  quizQueries.getScore(resultId) // score and quiz id 
+  quizQueries
+    .getScore(resultId) // score and quiz id
     .then((result) => {
-      console.log('TEST', result);
+      console.log("TEST", result);
       score = result[0].score;
       testersName = result[0].name;
       templateVars.score = score;
       templateVars.name = testersName;
-      quizQueries.countQuestions(result[0].quiz_id)
-        .then((num) => {
-          numberOfQuestions = num.toString();
-          templateVars.number = num.toString();
-          res.render("resultsPage", templateVars);
-        });
+      quizQueries.countQuestions(result[0].quiz_id).then((num) => {
+        numberOfQuestions = num.toString();
+        templateVars.number = num.toString();
+        res.render("resultsPage", templateVars);
+      });
     });
-
-
-
 });
 
 app.post("/results", (req, res) => {
@@ -97,28 +96,23 @@ app.post("/results", (req, res) => {
   let score = 0;
   const quizId = req.headers.referer[35];
 
-  quizQueries.correctAnswer(quizId)
-    .then((data) => {
-      let answerArray = [];
-      for (let i = 0; i < data.length; i++) {
-        answerArray.push(data[i].correct_answer);
-      }
-      for (let i = 0; i < answerArray.length; i++) {
-        if (answerArray[i] === req.body.answers[i]) {
-          score++;
-        }
-      }
-      quizQueries
-        .addScore(userId, quizId, score)
-        .then(() => {
-          const resultId = quizQueries.getResultsId(userId, quizId, score);
-          return resultId
-            .then((resultId) => {
-              res.json(resultId.id);
-            });
-        });
+  quizQueries.correctAnswer(quizId).then((data) => {
+    let answerArray = [];
+    for (let i = 0; i < data.length; i++) {
+      answerArray.push(data[i].correct_answer);
     }
-    );
+    for (let i = 0; i < answerArray.length; i++) {
+      if (answerArray[i] === req.body.answers[i]) {
+        score++;
+      }
+    }
+    quizQueries.addScore(userId, quizId, score).then(() => {
+      const resultId = quizQueries.getResultsId(userId, quizId, score);
+      return resultId.then((resultId) => {
+        res.json(resultId.id);
+      });
+    });
+  });
 });
 
 app.listen(PORT, () => {
