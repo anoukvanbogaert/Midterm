@@ -24,12 +24,10 @@
               <%= number %> questions
             </p>
           </div>
-
-
-          <p style="font-family: Bradley Hand, cursive;">By <%= quizMaker %>
-
-
+          <p
+          style="font-family: Bradley Hand, cursive;">By <%= quizMaker %>
           </p>
+          <p  class="shareLink" style="font-family: Bradley Hand, cursive;">Share Quiz: <a href="/quizzes/quiz/<%= quiz %>">/quiz/<%= quiz %></a></p>
         </div>
 
         <form action="/quizzes/quiz/<%= quiz %>/takequiz">
