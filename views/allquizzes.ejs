@@ -36,7 +36,7 @@
     <div class="all-quizzes-container">
       <div class="all-quizzes-grid">
         <h3>Title</h3>
-        <h3>User</h3>
+        <h3>Created By</h3>
         <h3>Creation Date</h3>
         <h3>Likes</h3>
         <h3>Rating</h3>
@@ -52,10 +52,10 @@
           </button>
         </form>
           <p>
-            <%= quiz.user_id %>
+            <%= quiz.maker %>
           </p>
           <p>
-            <%=quiz.created_at.toLocaleTimeString() %>
+            <%=quiz.created_at.getDate()+'/'+ quiz.created_at.getMonth()+'/'+quiz.created_at.getFullYear() %>
           </p>
           <span class="likes-box">
             <button class="button-thumb button">

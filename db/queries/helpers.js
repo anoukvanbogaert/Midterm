@@ -10,7 +10,7 @@ const getUsers = () => {
 
 // Get ALL quizzes
 const getQuizzes = () => {
-  return db.query("SELECT * FROM quizzes WHERE listed = TRUE;").then((data) => {
+  return db.query("SELECT quizzes.*, users.name as maker FROM quizzes JOIN users ON users.id = user_id WHERE listed = TRUE;").then((data) => {
     return data.rows;
   });
 };

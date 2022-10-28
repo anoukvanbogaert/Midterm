@@ -21,6 +21,7 @@ router.get("/", (req, res) => {
       userName,
     };
 
+
     // res.json({ quizzes });
     res.render("allquizzes", templateVars);
   });
