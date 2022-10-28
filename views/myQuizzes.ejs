@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- External JS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;1,300;1,400&family=Spicy+Rice&display=swap"
+    rel="stylesheet" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <!-- App JS -->
   <script type="text/javascript" src="/scripts/app.js"></script>
@@ -37,11 +40,19 @@
 
     <!-- element 2 in body class -->
 
-    <div class="all-quizzes-container">
+    <div class="all-quizzes-container-title">
+      <h1>My Quizzes</h1>
 
-      <div class="all-quizzes-container">
-        <h1>My Quizzes</h1>
+    </div>
+    <div class="all-quizzes-container">
+      <div class="all-quizzes-grid">
+        <h3>Title</h3>
+        <h3>User</h3>
+        <h3>Creation Date</h3>
+        <h3>Likes</h3>
+        <h3>Rating</h3>
       </div>
+
       <% for (let quiz of userQuizzes) { %>
 
         <div class="all-quizzes-grid single-quiz ">
